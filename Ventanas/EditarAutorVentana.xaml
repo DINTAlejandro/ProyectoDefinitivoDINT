@@ -116,7 +116,7 @@
             <TextBox x:Name="tbxNombre" Text="{Binding Path=AutorActual.Nombre}"></TextBox>
         </inputLayout:SfTextInputLayout>
 
-        <inputLayout:SfTextInputLayout Hint="Red Social" HelperText="Nickname" Margin="10">
+        <inputLayout:SfTextInputLayout Hint="@Manuel23" HelperText="Nickname" Margin="10">
             <TextBox x:Name="tbxNickName" Text="{Binding Path=AutorActual.Nickname}"></TextBox>
         </inputLayout:SfTextInputLayout>
         <inputLayout:SfTextInputLayout Hint="Red social" HelperText="Elegir la red social correspondiente" Margin="10">
