@@ -122,6 +122,8 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Clases\Articulo.cs" />
+    <Compile Include="Clases\Autor.cs" />
     <Compile Include="Mensajes\AutorRequestMessage.cs" />
     <Compile Include="Mensajes\NuevaPersonaValueChangedMessage.cs" />
     <Compile Include="Servicios\AbrirImagenesServicio.cs" />
