@@ -122,8 +122,8 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Clases\Articulo.cs" />
-    <Compile Include="Clases\Autor.cs" />
+    <Compile Include="Mensajes\AutorRequestMessage.cs" />
+    <Compile Include="Mensajes\NuevaPersonaValueChangedMessage.cs" />
     <Compile Include="Servicios\AbrirImagenesServicio.cs" />
     <Compile Include="Servicios\ServicioAutor.cs" />
     <Compile Include="Servicios\ServicioPdf.cs" />
@@ -133,6 +133,8 @@
     <Compile Include="Ventanas\NuevoAutorVentana.xaml.cs">
       <DependentUpon>NuevoAutorVentana.xaml</DependentUpon>
     </Compile>
+    <Compile Include="VistasModelo\EditarAutorVM.cs" />
+    <Compile Include="VistasModelo\NuevoAutorVM.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -183,8 +185,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Controles\" />
-    <Folder Include="Mensajes\" />
-    <Folder Include="VistasModelo\" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Recursos\ventana_autor_icono.ico" />

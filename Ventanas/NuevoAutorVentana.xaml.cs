@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ProyectoDefinitivoDINT.VistasModelo;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,9 +20,12 @@ namespace ProyectoDefinitivoDINT.Ventanas
     /// </summary>
     public partial class NuevoAutorVentana : Window
     {
+        NuevoAutorVM vm;
         public NuevoAutorVentana()
         {
             InitializeComponent();
+            vm = new NuevoAutorVM();
+            this.DataContext = vm;
         }
     }
 }
