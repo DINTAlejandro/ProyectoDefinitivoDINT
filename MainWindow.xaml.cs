@@ -1,4 +1,6 @@
-﻿using System;
+﻿using ProyectoDefinitivoDINT.Clases;
+using ProyectoDefinitivoDINT.Servicios;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,9 +22,15 @@ namespace ProyectoDefinitivoDINT
     /// </summary>
     public partial class MainWindow : Window
     {
+        
         public MainWindow()
         {
+
             InitializeComponent();
+            //Autor autor = new Autor("Juan","_juanMateo","");
+            //Articulo articulo = new Articulo("Prueba", "prueba2bin.jpg", "Texto prueba", "Seccion 3", autor, false);
+            //ServicioPdf pdf = new ServicioPdf();
+            //pdf.GenerarPDF(articulo);
         }
     }
 }
