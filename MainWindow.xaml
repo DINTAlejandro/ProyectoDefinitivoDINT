@@ -5,8 +5,30 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ProyectoDefinitivoDINT"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        
-    </Grid>
+        xmlns:syncfusion="http://schemas.syncfusion.com/wpf"
+        Title="Revista" Height="450" Width="800">
+    <DockPanel>
+        <syncfusion:SfNavigationDrawer x:Name="navigationDrawer" DisplayMode="Compact">
+            <syncfusion:NavigationItem Header="Artículos" IsExpanded="True" IsSelected="True">
+                <syncfusion:NavigationItem.Icon>
+                    <Image VerticalAlignment="Center" HorizontalAlignment="Center" Height="15" Source="/Recursos/articulo_icono.ico"></Image>
+                </syncfusion:NavigationItem.Icon>
+            </syncfusion:NavigationItem>
+            <syncfusion:NavigationItem Header="Autores">
+                <syncfusion:NavigationItem.Icon>
+                    <Image VerticalAlignment="Center" HorizontalAlignment="Center" Height="15" Source="Recursos/autor_icono.ico"></Image>
+                </syncfusion:NavigationItem.Icon>
+            </syncfusion:NavigationItem>
+            <syncfusion:NavigationItem Header="Censurar">
+                <syncfusion:NavigationItem.Icon>
+                    <Image VerticalAlignment="Center" HorizontalAlignment="Center" Height="15" Source="Recursos/censurar_icono.ico"></Image>
+                </syncfusion:NavigationItem.Icon>
+            </syncfusion:NavigationItem>
+        </syncfusion:SfNavigationDrawer>
+
+        <ContentControl Content="{Binding Path=ContenidoVista}">
+
+        </ContentControl>
+
+    </DockPanel>
 </Window>

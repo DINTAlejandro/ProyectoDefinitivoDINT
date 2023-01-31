@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ProyectoDefinitivoDINT.Mensajes
 {
-    class AutorRequestMessage : RequestMessage<Autor>
+    class AutorRequestMessage : RequestMessage<string>
     {
     }
 }

@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace ProyectoDefinitivoDINT.Mensajes
 {
-    class NuevaPersonaValueChangedMessage : ValueChangedMessage<Autor>
+    class NuevaPersonaValueChangedMessage : ValueChangedMessage<string>
     {
-        public NuevaPersonaValueChangedMessage(Autor autor) : base(autor) { }
+        public NuevaPersonaValueChangedMessage(string autor) : base(autor) { }
 
     }
 }
