@@ -1,0 +1,39 @@
+﻿<UserControl x:Class="ProyectoDefinitivoDINT.Controles.ListaAutoresControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:ProyectoDefinitivoDINT.Controles"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.Resources>
+        <DataTemplate  x:Key="autores">
+            <StackPanel Orientation="Horizontal">
+                <Image x:Name="imgImagen" Source="{Binding Path=Imagen}" Width="10" Height="10"></Image>
+                <TextBlock x:Name="tbkNombre" Text="{Binding Path=Nombre}"></TextBlock>
+                <TextBlock Margin="5,0">-</TextBlock>
+                <TextBlock x:Name="tbkNickname" Text="{Binding Path=Nickname}"></TextBlock>
+                <TextBlock Margin="5,0">-</TextBlock>
+                <TextBlock x:Name="tbkRedsocial" Text="{Binding Path=ImagenRedSocial}"></TextBlock>
+            </StackPanel>
+        </DataTemplate>
+    </UserControl.Resources>
+    <DockPanel>
+        <StackPanel DockPanel.Dock="Bottom"></StackPanel>
+        <ListBox SelectedItem="{Binding Path=AutorActual}" 
+             ScrollViewer.HorizontalScrollBarVisibility="Disabled" 
+             ScrollViewer.VerticalScrollBarVisibility="Disabled"  
+             ItemTemplate="{StaticResource autores}" 
+             ItemsSource="{Binding Path=Autor}"
+             Margin="10"
+             >
+            <ListBox.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <StackPanel>
+
+                    </StackPanel>
+                </ItemsPanelTemplate>
+            </ListBox.ItemsPanel>
+        </ListBox>
+    </DockPanel>
+</UserControl>
