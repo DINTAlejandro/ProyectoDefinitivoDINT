@@ -13,5 +13,10 @@ namespace ProyectoDefinitivoDINT
     /// </summary>
     public partial class App : Application
     {
+        public App()
+        {
+            //Register Syncfusion license
+            Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense(ProyectoDefinitivoDINT.Properties.Settings.Default.key);
+        }
     }
 }

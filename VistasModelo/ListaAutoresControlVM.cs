@@ -1,6 +1,8 @@
 ﻿using Microsoft.Toolkit.Mvvm.ComponentModel;
 using Microsoft.Toolkit.Mvvm.Input;
+using Microsoft.Toolkit.Mvvm.Messaging;
 using ProyectoDefinitivoDINT.Clases;
+using ProyectoDefinitivoDINT.Mensajes;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -30,20 +32,32 @@ namespace ProyectoDefinitivoDINT.VistasModelo
         }
 
         //Comandos
-        RelayCommand editarAutorCommand;
-        RelayCommand eliminarAutorCommand;
-        RelayCommand verAutorCommnad;
+        public RelayCommand EditarAutorCommand { get; }
+        public RelayCommand EliminarAutorCommand { get; }
+        public RelayCommand VerAutorCommnad { get; }
+
+        //Servicios
+        private AbrirVentanaServicio abrirVentanaServicio = new AbrirVentanaServicio();
 
         public ListaAutoresControlVM()
         {
+            //Mensajería
+            WeakReferenceMessenger.Default.Register<ListaAutoresControlVM, AutorRequestMessage>
+                (this, (r, m) =>
+                {
+                    m.Reply(AutorActual);
+                }
+            );
+
             //Propiedades
             AutorActual = null;
             Autores = new ObservableCollection<Autor>();
 
             //Comandos
-            editarAutorCommand = new RelayCommand(EditarAutor);
-            eliminarAutorCommand = new RelayCommand(EliminarAutor);
-            verAutorCommnad = new RelayCommand(VerAutor);
+            EditarAutorCommand = new RelayCommand(EditarAutor);
+            EliminarAutorCommand = new RelayCommand(EliminarAutor);
+            VerAutorCommnad = new RelayCommand(VerAutor);
+            
 
             //
             Autores = PilaAutores();
@@ -62,7 +76,7 @@ namespace ProyectoDefinitivoDINT.VistasModelo
         //Funciones comandos
         public void EditarAutor()
         {
-
+            abrirVentanaServicio.AbrirEditarAutor();
         }
 
         public void EliminarAutor()
@@ -72,7 +86,12 @@ namespace ProyectoDefinitivoDINT.VistasModelo
 
         public void VerAutor()
         {
+            
+        }
 
+        public void AbrirAutor()
+        {
+            abrirVentanaServicio.AbrirVerAutor();
         }
     }
 }

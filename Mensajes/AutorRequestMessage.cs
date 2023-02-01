@@ -10,5 +10,6 @@ namespace ProyectoDefinitivoDINT.Mensajes
 {
     class AutorRequestMessage : RequestMessage<Autor>
     {
+
     }
 }

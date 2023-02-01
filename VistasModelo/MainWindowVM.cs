@@ -1,5 +1,6 @@
 ﻿using Microsoft.Toolkit.Mvvm.ComponentModel;
 using ProyectoDefinitivoDINT.Controles;
+using ProyectoDefinitivoDINT.Servicios;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,7 +23,11 @@ namespace ProyectoDefinitivoDINT.VistasModelo
 
         public MainWindowVM()
         {
-            VistaActual = ListaAutoresControl();
+            //Servicios
+            CargarControlServicio cargarControlServicio = new CargarControlServicio();
+
+            VistaActual = cargarControlServicio.ListaAutores();
         }
+
     }
 }

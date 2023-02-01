@@ -4,27 +4,132 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:ProyectoDefinitivoDINT.Controles"
+            xmlns:convertidores="clr-namespace:ProyectoDefinitivoDINT.Convertidores"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <UserControl.Resources>
+        <convertidores:RedSocialConverter x:Key="conversorImagen"></convertidores:RedSocialConverter>
         <DataTemplate  x:Key="autores">
             <StackPanel Orientation="Horizontal">
-                <Image x:Name="imgImagen" Source="{Binding Path=Imagen}" Width="10" Height="10"></Image>
+                <Image x:Name="imgImagen" Source="{Binding Path=Image}" Width="15" Height="15"></Image>
+                <TextBlock Margin="5,0"> </TextBlock>
                 <TextBlock x:Name="tbkNombre" Text="{Binding Path=Nombre}"></TextBlock>
-                <TextBlock Margin="5,0">-</TextBlock>
+                <TextBlock Margin="5,0"> </TextBlock>
                 <TextBlock x:Name="tbkNickname" Text="{Binding Path=Nickname}"></TextBlock>
-                <TextBlock Margin="5,0">-</TextBlock>
-                <TextBlock x:Name="tbkRedsocial" Text="{Binding Path=ImagenRedSocial}"></TextBlock>
+                <TextBlock Margin="5,0"> </TextBlock>
+                <Image x:Name="imgRedSocial" Source="{Binding Path=ImagenRedSocial,Converter={StaticResource conversorImagen}}" Width="15" Height="15"></Image>
             </StackPanel>
         </DataTemplate>
+        <ControlTemplate x:Key="newButton" TargetType="{x:Type Button}">
+            <Border x:Name="border" Padding="5" CornerRadius="4" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="True">
+                <ContentPresenter x:Name="contentPresenter" ContentTemplate="{TemplateBinding ContentTemplate}" Content="{TemplateBinding Content}" ContentStringFormat="{TemplateBinding ContentStringFormat}" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+            </Border>
+            <ControlTemplate.Triggers>
+                <Trigger Property="IsDefaulted" Value="True">
+                    <Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}"/>
+                </Trigger>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" TargetName="border" Value="#FFBEE6FD"/>
+                    <Setter Property="BorderBrush" TargetName="border" Value="#FF3C7FB1"/>
+                </Trigger>
+                <Trigger Property="IsPressed" Value="True">
+                    <Setter Property="Background" TargetName="border" Value="#FFC4E5F6"/>
+                    <Setter Property="BorderBrush" TargetName="border" Value="#FF2C628B"/>
+                </Trigger>
+                <Trigger Property="ToggleButton.IsChecked" Value="True">
+                    <Setter Property="Background" TargetName="border" Value="#FFBCDDEE"/>
+                    <Setter Property="BorderBrush" TargetName="border" Value="#FF245A83"/>
+                </Trigger>
+                <Trigger Property="IsEnabled" Value="False">
+                    <Setter Property="Background" TargetName="border" Value="#FFF4F4F4"/>
+                    <Setter Property="BorderBrush" TargetName="border" Value="#FFADB2B5"/>
+                    <Setter Property="Foreground" Value="#FF838383"/>
+                </Trigger>
+                <Trigger Property="IsEnabled" Value="True">
+                    <Setter Property="Background" TargetName="border" Value="Blue"/>
+                    <Setter Property="BorderBrush" TargetName="border" Value="#000000"/>
+                    <Setter Property="Foreground" Value="#FFFFFF"/>
+                </Trigger>
+            </ControlTemplate.Triggers>
+        </ControlTemplate>
+        <ControlTemplate x:Key="deleteButton" TargetType="{x:Type Button}">
+            <Border x:Name="border" Padding="5" CornerRadius="4" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="True">
+                <ContentPresenter x:Name="contentPresenter" ContentTemplate="{TemplateBinding ContentTemplate}" Content="{TemplateBinding Content}" ContentStringFormat="{TemplateBinding ContentStringFormat}" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+            </Border>
+            <ControlTemplate.Triggers>
+                <Trigger Property="IsDefaulted" Value="True">
+                    <Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}"/>
+                </Trigger>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" TargetName="border" Value="#FFBEE6FD"/>
+                    <Setter Property="BorderBrush" TargetName="border" Value="#FF3C7FB1"/>
+                </Trigger>
+                <Trigger Property="IsPressed" Value="True">
+                    <Setter Property="Background" TargetName="border" Value="#FFC4E5F6"/>
+                    <Setter Property="BorderBrush" TargetName="border" Value="#FF2C628B"/>
+                </Trigger>
+                <Trigger Property="ToggleButton.IsChecked" Value="True">
+                    <Setter Property="Background" TargetName="border" Value="#FFBCDDEE"/>
+                    <Setter Property="BorderBrush" TargetName="border" Value="#FF245A83"/>
+                </Trigger>
+                <Trigger Property="IsEnabled" Value="False">
+                    <Setter Property="Background" TargetName="border" Value="#FFF4F4F4"/>
+                    <Setter Property="BorderBrush" TargetName="border" Value="#FFADB2B5"/>
+                    <Setter Property="Foreground" Value="#FF838383"/>
+                </Trigger>
+                <Trigger Property="IsEnabled" Value="True">
+                    <Setter Property="Background" TargetName="border" Value="Red"/>
+                    <Setter Property="BorderBrush" TargetName="border" Value="#000000"/>
+                    <Setter Property="Foreground" Value="#FFFFFF"/>
+                </Trigger>
+            </ControlTemplate.Triggers>
+        </ControlTemplate>
+        <ControlTemplate x:Key="lookButton" TargetType="{x:Type Button}">
+            <Border x:Name="border" Padding="5" CornerRadius="4" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="True">
+                <ContentPresenter x:Name="contentPresenter" ContentTemplate="{TemplateBinding ContentTemplate}" Content="{TemplateBinding Content}" ContentStringFormat="{TemplateBinding ContentStringFormat}" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+            </Border>
+            <ControlTemplate.Triggers>
+                <Trigger Property="IsDefaulted" Value="True">
+                    <Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}"/>
+                </Trigger>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" TargetName="border" Value="#FFBEE6FD"/>
+                    <Setter Property="BorderBrush" TargetName="border" Value="#FF3C7FB1"/>
+                </Trigger>
+                <Trigger Property="IsPressed" Value="True">
+                    <Setter Property="Background" TargetName="border" Value="#FFC4E5F6"/>
+                    <Setter Property="BorderBrush" TargetName="border" Value="#FF2C628B"/>
+                </Trigger>
+                <Trigger Property="ToggleButton.IsChecked" Value="True">
+                    <Setter Property="Background" TargetName="border" Value="#FFBCDDEE"/>
+                    <Setter Property="BorderBrush" TargetName="border" Value="#FF245A83"/>
+                </Trigger>
+                <Trigger Property="IsEnabled" Value="False">
+                    <Setter Property="Background" TargetName="border" Value="#FFF4F4F4"/>
+                    <Setter Property="BorderBrush" TargetName="border" Value="#FFADB2B5"/>
+                    <Setter Property="Foreground" Value="#FF838383"/>
+                </Trigger>
+                <Trigger Property="IsEnabled" Value="True">
+                    <Setter Property="Background" TargetName="border" Value="Green"/>
+                    <Setter Property="BorderBrush" TargetName="border" Value="#000000"/>
+                    <Setter Property="Foreground" Value="#FFFFFF"/>
+                </Trigger>
+            </ControlTemplate.Triggers>
+        </ControlTemplate>
+        
     </UserControl.Resources>
     <DockPanel>
-        <StackPanel DockPanel.Dock="Bottom"></StackPanel>
-        <ListBox SelectedItem="{Binding Path=AutorActual}" 
+        <StackPanel DockPanel.Dock="Bottom" Orientation="Horizontal" Margin="10">
+            <Button Margin="0,0,10,0" x:Name="btnEliminar" Width="75" Template="{StaticResource deleteButton}" Command="{Binding Path=EliminarAutorCommand}">Eliminar</Button>
+            <Button Margin="10,0" x:Name="btnEditar" Width="50" Template="{StaticResource newButton}" Command="{Binding Path=EditarAutorCommand}">Editar</Button>
+            <Button Margin="10,0" x:Name="btnVer" Width="50" Template="{StaticResource lookButton}" Command="{Binding Path=VerAutorCommand}">Ver</Button>
+        </StackPanel>
+        <ListBox SelectedItem="{Binding Path=AutorActual}"
+             
              ScrollViewer.HorizontalScrollBarVisibility="Disabled" 
              ScrollViewer.VerticalScrollBarVisibility="Disabled"  
              ItemTemplate="{StaticResource autores}" 
-             ItemsSource="{Binding Path=Autor}"
+             ItemsSource="{Binding Path=Autores}"
              Margin="10"
              >
             <ListBox.ItemsPanel>

@@ -26,7 +26,7 @@
             </syncfusion:NavigationItem>
         </syncfusion:SfNavigationDrawer>
 
-        <ContentControl Content="{Binding Path=ContenidoVista}">
+        <ContentControl Content="{Binding Path=VistaActual}">
             
         </ContentControl>
 

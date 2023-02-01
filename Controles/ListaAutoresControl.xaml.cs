@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ProyectoDefinitivoDINT.VistasModelo;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,14 +16,14 @@ using System.Windows.Shapes;
 
 namespace ProyectoDefinitivoDINT.Controles
 {
-    /// <summary>
-    /// Lógica de interacción para ListaAutoresControl.xaml
-    /// </summary>
     public partial class ListaAutoresControl : UserControl
     {
+        ListaAutoresControlVM vm;
         public ListaAutoresControl()
         {
             InitializeComponent();
+            vm = new ListaAutoresControlVM();
+            this.DataContext = vm;
         }
     }
 }

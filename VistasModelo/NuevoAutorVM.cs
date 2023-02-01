@@ -40,6 +40,10 @@ namespace ProyectoDefinitivoDINT.VistasModelo
             set { SetProperty(ref imagen, value); }
         }
 
+        //Servicios
+        CargarRedesSocialesServicio cargarRedesSocialesServicio;
+
+        //Comandos
         public RelayCommand SeleccionarImagenCommand { get; }
 
         private ObservableCollection<string> listaRedesSociales;
@@ -51,11 +55,14 @@ namespace ProyectoDefinitivoDINT.VistasModelo
 
         public NuevoAutorVM()
         {
+            //Servicios
+            cargarRedesSocialesServicio = new CargarRedesSocialesServicio();
+
             //Comandos
             SeleccionarImagenCommand = new RelayCommand(SeleccionarImagenAutor);
 
             //Propiedades
-            ListaRedesSociales = RellenarListaRedesSociales();
+            ListaRedesSociales = cargarRedesSocialesServicio.CargarRedesSociales();
         }
 
         public void SeleccionarImagenAutor()
@@ -64,14 +71,6 @@ namespace ProyectoDefinitivoDINT.VistasModelo
             Imagen = servicioAbrir.ObtenerImagen();
         }
 
-        private ObservableCollection<string> RellenarListaRedesSociales()
-        {
-            ObservableCollection<string> nuevaListaRedesSociales = new ObservableCollection<string>();
-            nuevaListaRedesSociales.Add("Twitter");
-            nuevaListaRedesSociales.Add("Instagram");
-            nuevaListaRedesSociales.Add("Facebook");
 
-            return nuevaListaRedesSociales;
-        }
     }
 }

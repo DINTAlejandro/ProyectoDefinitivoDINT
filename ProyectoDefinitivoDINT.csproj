@@ -130,9 +130,14 @@
     <Compile Include="Controles\ListaAutoresControl.xaml.cs">
       <DependentUpon>ListaAutoresControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Convertidores\RedSocialConverter.cs" />
+    <Compile Include="Mensajes\AbrirVentanaServicio.cs" />
     <Compile Include="Mensajes\AutorRequestMessage.cs" />
-    <Compile Include="Mensajes\NuevaPersonaValueChangedMessage.cs" />
+    <Compile Include="Mensajes\AutorValueChangedMessage.cs" />
+    <Compile Include="RedSocialConvertidor.cs" />
     <Compile Include="Servicios\AbrirImagenesServicio.cs" />
+    <Compile Include="Servicios\CargarControlServicio.cs" />
+    <Compile Include="Servicios\CargarRedesSocialesServicio.cs" />
     <Compile Include="Servicios\ServicioAutor.cs" />
     <Compile Include="Servicios\ServicioPdf.cs" />
     <Compile Include="Ventanas\EditarAutorVentana.xaml.cs">
@@ -197,7 +202,11 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="Recursos\facebook.png" />
+    <Resource Include="Recursos\instagram.jpg" />
+    <Resource Include="Recursos\twitter.jpg" />
+  </ItemGroup>
   <ItemGroup>
     <Resource Include="Recursos\ventana_autor_icono.ico" />
   </ItemGroup>
