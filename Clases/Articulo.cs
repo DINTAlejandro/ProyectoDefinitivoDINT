@@ -10,6 +10,7 @@ namespace ProyectoDefinitivoDINT.Clases
     class Articulo : ObservableObject
     {
         private string titulo;
+        private int id;
         private string imagen;
         private string texto;
         private string seccion;
@@ -48,6 +49,11 @@ namespace ProyectoDefinitivoDINT.Clases
         {
             get { return publicado; }
             set { SetProperty(ref publicado, value); }
+        }
+        public int Id
+        {
+            get { return id; }
+            set { SetProperty(ref id, value); }
         }
 
         public Articulo()
