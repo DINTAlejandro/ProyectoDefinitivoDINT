@@ -10,6 +10,7 @@ namespace ProyectoDefinitivoDINT.Clases
 {
     class Autor : ObservableObject
     {
+        private int id;
         private string nombre;
         private string nickname;
         private string image;
@@ -35,6 +36,11 @@ namespace ProyectoDefinitivoDINT.Clases
         {
             get { return imagenRedSocial; }
             set { SetProperty(ref imagenRedSocial, value); }
+        }
+        public int Id
+        {
+            get { return id; }
+            set { SetProperty(ref id, value); }
         }
         public ObservableCollection<Articulo> Articulos
         {

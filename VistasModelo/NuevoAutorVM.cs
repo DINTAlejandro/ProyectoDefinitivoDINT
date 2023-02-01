@@ -74,4 +74,4 @@ namespace ProyectoDefinitivoDINT.VistasModelo
             return nuevaListaRedesSociales;
         }
     }
-    }
+}
