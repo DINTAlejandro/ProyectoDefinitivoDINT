@@ -116,6 +116,7 @@
     <Compile Include="Mensajes\AutorRequestMessage.cs" />
     <Compile Include="Mensajes\NuevaPersonaValueChangedMessage.cs" />
     <Compile Include="Servicios\AbrirImagenesServicio.cs" />
+    <Compile Include="Servicios\ServicioBD.cs" />
     <Compile Include="Ventanas\EditarAutorVentana.xaml.cs">
       <DependentUpon>EditarAutorVentana.xaml</DependentUpon>
     </Compile>
