@@ -138,6 +138,7 @@
     <Compile Include="Servicios\AbrirImagenesServicio.cs" />
     <Compile Include="Servicios\CargarControlServicio.cs" />
     <Compile Include="Servicios\CargarRedesSocialesServicio.cs" />
+    <Compile Include="Servicios\ControlErroresServicio.cs" />
     <Compile Include="Servicios\ServicioAutor.cs" />
     <Compile Include="Servicios\ServicioPdf.cs" />
     <Compile Include="Ventanas\EditarAutorVentana.xaml.cs">

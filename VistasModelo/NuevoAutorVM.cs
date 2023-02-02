@@ -1,5 +1,8 @@
 ﻿using Microsoft.Toolkit.Mvvm.ComponentModel;
 using Microsoft.Toolkit.Mvvm.Input;
+using Microsoft.Toolkit.Mvvm.Messaging;
+using ProyectoDefinitivoDINT.Clases;
+using ProyectoDefinitivoDINT.Mensajes;
 using ProyectoDefinitivoDINT.Servicios;
 using System;
 using System.Collections.Generic;
@@ -42,9 +45,11 @@ namespace ProyectoDefinitivoDINT.VistasModelo
 
         //Servicios
         CargarRedesSocialesServicio cargarRedesSocialesServicio;
+        ControlErroresServicio controlErroresServicio;
 
         //Comandos
         public RelayCommand SeleccionarImagenCommand { get; }
+        public RelayCommand AceptarCommand { get; }
 
         private ObservableCollection<string> listaRedesSociales;
         public ObservableCollection<string> ListaRedesSociales
@@ -57,18 +62,33 @@ namespace ProyectoDefinitivoDINT.VistasModelo
         {
             //Servicios
             cargarRedesSocialesServicio = new CargarRedesSocialesServicio();
+            controlErroresServicio = new ControlErroresServicio();
 
             //Comandos
             SeleccionarImagenCommand = new RelayCommand(SeleccionarImagenAutor);
+            AceptarCommand = new RelayCommand(ErrorVacio);
 
             //Propiedades
             ListaRedesSociales = cargarRedesSocialesServicio.CargarRedesSociales();
+            //Mensajería
+            //WeakReferenceMessenger.Default.Register<NuevoAutorVM, AutorRequestMessage>
+            //    (this, (r, m) =>
+            //    {
+            //        m.Reply(new Autor(Nombre, Nickname, Imagen, RedSocial));
+            //    }
+            //);
         }
 
         public void SeleccionarImagenAutor()
         {
             AbrirImagenesServicio servicioAbrir = new AbrirImagenesServicio();
             Imagen = servicioAbrir.ObtenerImagen();
+        }
+
+        public void ErrorVacio()
+        {
+            if(Nombre == "" || Nickname == "" || RedSocial == "" || Imagen == "")
+                controlErroresServicio.ErrorCamposVacios();
         }
 
 

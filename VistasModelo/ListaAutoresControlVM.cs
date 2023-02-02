@@ -35,6 +35,7 @@ namespace ProyectoDefinitivoDINT.VistasModelo
         public RelayCommand EditarAutorCommand { get; }
         public RelayCommand EliminarAutorCommand { get; }
         public RelayCommand VerAutorCommnad { get; }
+        public RelayCommand NuevoAutorCommnad { get; }
 
         //Servicios
         private AbrirVentanaServicio abrirVentanaServicio = new AbrirVentanaServicio();
@@ -48,6 +49,8 @@ namespace ProyectoDefinitivoDINT.VistasModelo
                     m.Reply(AutorActual);
                 }
             );
+            
+
 
             //Propiedades
             AutorActual = null;
@@ -57,6 +60,7 @@ namespace ProyectoDefinitivoDINT.VistasModelo
             EditarAutorCommand = new RelayCommand(EditarAutor);
             EliminarAutorCommand = new RelayCommand(EliminarAutor);
             VerAutorCommnad = new RelayCommand(VerAutor);
+            NuevoAutorCommnad = new RelayCommand(NuevoAutor);
             
 
             //
@@ -81,17 +85,18 @@ namespace ProyectoDefinitivoDINT.VistasModelo
 
         public void EliminarAutor()
         {
-
+            //Remove consulta
+            Autores.Remove(AutorActual);
         }
 
         public void VerAutor()
         {
-            
+            abrirVentanaServicio.AbrirVerAutor();
         }
 
-        public void AbrirAutor()
+        public void NuevoAutor()
         {
-            abrirVentanaServicio.AbrirVerAutor();
+            abrirVentanaServicio.AbrirCrearAutor();
         }
     }
 }
