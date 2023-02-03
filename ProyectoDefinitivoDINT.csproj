@@ -127,30 +127,57 @@
     </ApplicationDefinition>
     <Compile Include="Clases\Articulo.cs" />
     <Compile Include="Clases\Autor.cs" />
+    <Compile Include="Controles\ListaArticulosControl.xaml.cs">
+      <DependentUpon>ListaArticulosControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controles\ListaAutoresControl.xaml.cs">
       <DependentUpon>ListaAutoresControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Convertidores\PublicadoConverter.cs" />
     <Compile Include="Convertidores\RedSocialConverter.cs" />
-    <Compile Include="Mensajes\AbrirVentanaServicio.cs" />
+    <Compile Include="Mensajes\ArticuloRequestMessage.cs" />
+    <Compile Include="Mensajes\ArticuloValueChangedMessage.cs" />
+    <Compile Include="Servicios\AbrirVentanaServicio.cs" />
     <Compile Include="Mensajes\AutorRequestMessage.cs" />
     <Compile Include="Mensajes\AutorValueChangedMessage.cs" />
-    <Compile Include="RedSocialConvertidor.cs" />
     <Compile Include="Servicios\AbrirImagenesServicio.cs" />
+    <Compile Include="Servicios\CargarCategoriasServicio.cs" />
     <Compile Include="Servicios\CargarControlServicio.cs" />
     <Compile Include="Servicios\CargarRedesSocialesServicio.cs" />
     <Compile Include="Servicios\ControlErroresServicio.cs" />
     <Compile Include="Servicios\ServicioAutor.cs" />
     <Compile Include="Servicios\ServicioPdf.cs" />
+    <Compile Include="Ventanas\EditarArticuloVentana.xaml.cs">
+      <DependentUpon>EditarArticuloVentana.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Ventanas\EditarAutorVentana.xaml.cs">
       <DependentUpon>EditarAutorVentana.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Ventanas\NuevoArticuloVentana.xaml.cs">
+      <DependentUpon>NuevoArticuloVentana.xaml</DependentUpon>
     </Compile>
     <Compile Include="Ventanas\NuevoAutorVentana.xaml.cs">
       <DependentUpon>NuevoAutorVentana.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Ventanas\VerArticuloVentana.xaml.cs">
+      <DependentUpon>VerArticuloVentana.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Ventanas\VerAutorVentana.xaml.cs">
+      <DependentUpon>VerAutorVentana.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="VistasModelo\EditarArticuloVM.cs" />
     <Compile Include="VistasModelo\EditarAutorVM.cs" />
+    <Compile Include="VistasModelo\ListaArticulosControlVM.cs" />
     <Compile Include="VistasModelo\ListaAutoresControlVM.cs" />
     <Compile Include="VistasModelo\MainWindowVM.cs" />
+    <Compile Include="VistasModelo\NuevoArticuloVM.cs" />
     <Compile Include="VistasModelo\NuevoAutorVM.cs" />
+    <Compile Include="VistasModelo\VerArticuloVM.cs" />
+    <Compile Include="VistasModelo\VerAutorVentanaVM.cs" />
+    <Page Include="Controles\ListaArticulosControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Controles\ListaAutoresControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -167,11 +194,27 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Ventanas\EditarArticuloVentana.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Ventanas\EditarAutorVentana.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Ventanas\NuevoArticuloVentana.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Ventanas\NuevoAutorVentana.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Ventanas\VerArticuloVentana.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Ventanas\VerAutorVentana.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -219,6 +262,7 @@
     <Resource Include="Recursos\censurar_icono.ico" />
     <Resource Include="Recursos\autor_icono.ico" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="packages\SQLitePCLRaw.lib.e_sqlite3.2.0.4\build\net461\SQLitePCLRaw.lib.e_sqlite3.targets" Condition="Exists('packages\SQLitePCLRaw.lib.e_sqlite3.2.0.4\build\net461\SQLitePCLRaw.lib.e_sqlite3.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

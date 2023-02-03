@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace ProyectoDefinitivoDINT.VistasModelo
 {
-    class ListaAutoresControlVM : ObservableObject
+    public class ListaAutoresControlVM : ObservableObject
     {
         //Propiedades
         private Autor autorActual;
@@ -34,7 +34,7 @@ namespace ProyectoDefinitivoDINT.VistasModelo
         //Comandos
         public RelayCommand EditarAutorCommand { get; }
         public RelayCommand EliminarAutorCommand { get; }
-        public RelayCommand VerAutorCommnad { get; }
+        public RelayCommand VerAutorCommand { get; }
         public RelayCommand NuevoAutorCommnad { get; }
 
         //Servicios
@@ -59,7 +59,7 @@ namespace ProyectoDefinitivoDINT.VistasModelo
             //Comandos
             EditarAutorCommand = new RelayCommand(EditarAutor);
             EliminarAutorCommand = new RelayCommand(EliminarAutor);
-            VerAutorCommnad = new RelayCommand(VerAutor);
+            VerAutorCommand = new RelayCommand(VerAutor);
             NuevoAutorCommnad = new RelayCommand(NuevoAutor);
             
 

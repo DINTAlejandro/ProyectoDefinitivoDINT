@@ -23,7 +23,25 @@ namespace ProyectoDefinitivoDINT.Mensajes
 
         public bool? AbrirVerAutor()
         {
-            NuevoAutorVentana nuevaVentana = new NuevoAutorVentana();
+            VerAutorVentana nuevaVentana = new VerAutorVentana();
+            return nuevaVentana.ShowDialog();
+        }
+
+        internal bool? AbrirEditarArticulo()
+        {
+            EditarArticuloVentana nuevaVentana = new EditarArticuloVentana();
+            return nuevaVentana.ShowDialog();
+        }
+
+        internal bool? AbrirVerArticulo()
+        {
+            VerArticuloVentana nuevaVentana = new VerArticuloVentana();
+            return nuevaVentana.ShowDialog();
+        }
+
+        internal bool? AbrirCrearArticulo()
+        {
+            NuevoArticuloVentana nuevaVentana = new NuevoArticuloVentana();
             return nuevaVentana.ShowDialog();
         }
     }

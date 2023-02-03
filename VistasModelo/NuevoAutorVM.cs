@@ -13,7 +13,7 @@ using System.Threading.Tasks;
 
 namespace ProyectoDefinitivoDINT.VistasModelo
 {
-    class NuevoAutorVM : ObservableObject
+    public class NuevoAutorVM : ObservableObject
     {
         private string nombre;
         public string Nombre
@@ -44,8 +44,8 @@ namespace ProyectoDefinitivoDINT.VistasModelo
         }
 
         //Servicios
-        CargarRedesSocialesServicio cargarRedesSocialesServicio;
-        ControlErroresServicio controlErroresServicio;
+        private CargarRedesSocialesServicio cargarRedesSocialesServicio;
+        private ControlErroresServicio controlErroresServicio;
 
         //Comandos
         public RelayCommand SeleccionarImagenCommand { get; }

@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace ProyectoDefinitivoDINT.Clases
 {
-    class Autor : ObservableObject
+    public class Autor : ObservableObject
     {
         private string nombre;
         private string nickname;

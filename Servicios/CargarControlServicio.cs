@@ -16,5 +16,10 @@ namespace ProyectoDefinitivoDINT.Servicios
         {
             return new ListaAutoresControl();
         }
+
+        public UserControl ListaArticulos()
+        {
+            return new ListaArticulosControl();
+        }
     }
 }

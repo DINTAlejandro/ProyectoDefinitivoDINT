@@ -26,7 +26,7 @@ namespace ProyectoDefinitivoDINT.VistasModelo
             //Servicios
             CargarControlServicio cargarControlServicio = new CargarControlServicio();
 
-            VistaActual = cargarControlServicio.ListaAutores();
+            VistaActual = cargarControlServicio.ListaArticulos();
         }
 
     }

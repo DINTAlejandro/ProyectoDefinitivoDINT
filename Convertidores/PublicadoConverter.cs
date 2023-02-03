@@ -6,20 +6,18 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Data;
 
-namespace ProyectoDefinitivoDINT
+namespace ProyectoDefinitivoDINT.Convertidores
 {
-    class RedSocialConvertidor : IValueConverter
+    class PublicadoConverter : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            switch ((string)value)
+            switch ((bool)value)
             {
-                case "Twitter":
-                    return "/Recursos/twitter.png";
-                case "Facebook":
-                    return "/Recursos/facebook.png";
-                case "Instragram":
-                    return "/Recursos/instagram.png";
+                case true:
+                    return "Publicado";
+                case false:
+                    return "No Publicado";
                 default:
                     return null;
             }
@@ -29,5 +27,7 @@ namespace ProyectoDefinitivoDINT
         {
             throw new NotImplementedException();
         }
+
+
     }
 }

@@ -13,7 +13,7 @@ using System.Threading.Tasks;
 
 namespace ProyectoDefinitivoDINT.VistasModelo
 {
-    class EditarAutorVM : ObservableRecipient
+    public class EditarAutorVM : ObservableRecipient
     {
         //Propiedades
         private Autor autorActual;
@@ -32,6 +32,7 @@ namespace ProyectoDefinitivoDINT.VistasModelo
 
         //Servicios
         CargarRedesSocialesServicio cargarRedesSocialesServicio;
+
         
         
         //Comandos

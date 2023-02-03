@@ -20,7 +20,7 @@
                 <Image x:Name="imgRedSocial" Source="{Binding Path=ImagenRedSocial,Converter={StaticResource conversorImagen}}" Width="15" Height="15"></Image>
             </StackPanel>
         </DataTemplate>
-        <ControlTemplate x:Key="newButton" TargetType="{x:Type Button}">
+        <ControlTemplate x:Key="editButton" TargetType="{x:Type Button}">
             <Border x:Name="border" Padding="5" CornerRadius="4" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="True">
                 <ContentPresenter x:Name="contentPresenter" ContentTemplate="{TemplateBinding ContentTemplate}" Content="{TemplateBinding Content}" ContentStringFormat="{TemplateBinding ContentStringFormat}" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
             </Border>
@@ -116,7 +116,7 @@
                 </Trigger>
             </ControlTemplate.Triggers>
         </ControlTemplate>
-        <ControlTemplate x:Key="lookButton" TargetType="{x:Type Button}">
+        <ControlTemplate x:Key="newButton" TargetType="{x:Type Button}">
             <Border x:Name="border" Padding="5" CornerRadius="4" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="True">
                 <ContentPresenter x:Name="contentPresenter" ContentTemplate="{TemplateBinding ContentTemplate}" Content="{TemplateBinding Content}" ContentStringFormat="{TemplateBinding ContentStringFormat}" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
             </Border>
