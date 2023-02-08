@@ -20,11 +20,11 @@ namespace ProyectoDefinitivoDINT.Ventanas
     /// </summary>
     public partial class NuevoArticuloVentana : Window
     {
-        private NuevoAutorVM vm;
+        private NuevoArticuloVM vm;
         public NuevoArticuloVentana()
         {
             InitializeComponent();
-            vm = new NuevoAutorVM();
+            vm = new NuevoArticuloVM();
             this.DataContext = vm;
         }
     }

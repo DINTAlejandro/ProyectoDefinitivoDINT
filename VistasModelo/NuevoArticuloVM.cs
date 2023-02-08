@@ -21,11 +21,11 @@ namespace ProyectoDefinitivoDINT.VistasModelo
             set { SetProperty(ref articuloActual, value); }
         }
 
-        private ObservableCollection<string> categorias;
-        public ObservableCollection<string> Categorias
+        private ObservableCollection<string> listaCategorias;
+        public ObservableCollection<string> ListaCategorias
         {
-            get { return categorias; }
-            set { SetProperty(ref categorias, value); }
+            get { return listaCategorias; }
+            set { SetProperty(ref listaCategorias, value); }
         }
 
 
@@ -48,8 +48,8 @@ namespace ProyectoDefinitivoDINT.VistasModelo
             SeleccionarImagenCommand = new RelayCommand(SeleccionarImagenAutor);
 
             //Propiedades
-            ArticuloActual = null;
-            Categorias = cargarCategoriasServicio.CargarCategorias();
+            ArticuloActual = new Articulo();
+            ListaCategorias = cargarCategoriasServicio.CargarCategorias();
             
         }
 

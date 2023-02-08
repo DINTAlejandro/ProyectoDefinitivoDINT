@@ -23,12 +23,13 @@ namespace ProyectoDefinitivoDINT.VistasModelo
             set { SetProperty(ref articuloActual, value); }
         }
 
-        private ObservableCollection<string> categorias;
-        public ObservableCollection<string> Categorias
+        private ObservableCollection<string> listaRedesSociales;
+        public ObservableCollection<string> ListaRedesSociales
         {
-            get { return categorias; }
-            set { SetProperty(ref categorias, value); }
+            get { return listaRedesSociales; }
+            set { SetProperty(ref listaRedesSociales, value); }
         }
+
 
 
         //Servicios
@@ -49,7 +50,7 @@ namespace ProyectoDefinitivoDINT.VistasModelo
             SeleccionarImagenCommand = new RelayCommand(SeleccionarImagenAutor);
 
             //Propiedades
-            Categorias = cargarCategoriasServicio.CargarCategorias();
+            ListaRedesSociales = cargarCategoriasServicio.CargarCategorias();
             ArticuloActual = WeakReferenceMessenger.Default.Send<ArticuloRequestMessage>();
         }
 
