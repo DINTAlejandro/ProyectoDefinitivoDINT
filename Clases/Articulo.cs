@@ -16,6 +16,7 @@ namespace ProyectoDefinitivoDINT.Clases
         private string seccion;
         private Autor autor;
         private bool publicado;
+        private string pdf;
 
         public string Titulo
         {
@@ -55,12 +56,17 @@ namespace ProyectoDefinitivoDINT.Clases
             get { return id; }
             set { SetProperty(ref id, value); }
         }
+        public string Pdf
+        {
+            get { return pdf; }
+            set { SetProperty(ref pdf, value); }
+        }
 
         public Articulo()
         {
         }
 
-        public Articulo(string titulo, string imagen, string texto, string seccion, Autor autor, bool publicado)
+        public Articulo(string titulo, string imagen, string texto, string seccion, Autor autor, bool publicado, string pdf)
         {
             this.titulo = titulo;
             this.imagen = imagen;
@@ -68,6 +74,7 @@ namespace ProyectoDefinitivoDINT.Clases
             this.seccion = seccion;
             this.autor = autor;
             this.publicado = publicado;
+            this.pdf = pdf;
         }
     }
 }

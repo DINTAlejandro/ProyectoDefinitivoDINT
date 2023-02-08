@@ -1,5 +1,6 @@
 ﻿using Microsoft.Data.Sqlite;
 using Microsoft.Toolkit.Mvvm.ComponentModel;
+using ProyectoDefinitivoDINT.Clases;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -27,7 +28,7 @@ namespace ProyectoDefinitivoDINT
             comando.CommandText = @"CREATE TABLE IF NOT EXISTS Articulos 
                                     (id integer primary key AUTOINCREMENT, titulo varchar(20), imagen varchar(100) DEFAULT NULL, 
                                      texto varchar(200) DEFAULT NULL, seccion varchar(20) DEFAULT NULL,
-                                     autorId integer DEFAULT NULL, publicado BIT DEFAULT NULL, 
+                                     autorId integer DEFAULT NULL, publicado BIT DEFAULT NULL, pdf varchar(100) DEFAULT NULL, 
                                      FOREIGN KEY (autorId) REFERENCES Autores(id), FOREIGN KEY (seccion) REFERENCES Secciones(name))";
 
             comando.ExecuteNonQuery();
@@ -94,6 +95,7 @@ namespace ProyectoDefinitivoDINT
                     art.Seccion = lector.GetString(4);
                     art.Autor = GetAutorById(lector.GetInt32(5));
                     art.Publicado = lector.GetBoolean(6);
+                    art.Pdf = lector.GetString(7);
                     AllArticles.Add(art);
                 }
             }
@@ -182,6 +184,7 @@ namespace ProyectoDefinitivoDINT
                 TheArticle.Seccion = lector.GetString(4);
                 TheArticle.Autor = GetAutorById(lector.GetInt32(5));
                 TheArticle.Publicado = lector.GetBoolean(6);
+                TheArticle.Pdf = lector.GetString(7);
             }
 
             lector.Close();
@@ -217,19 +220,21 @@ namespace ProyectoDefinitivoDINT
             conexion.Open();
             SqliteCommand comando = conexion.CreateCommand();
 
-            comando.CommandText = "INSERT INTO Articulos (titulo,imagen,texto,seccion,autorId,publicado) VALUES (@titulo,@imagen,@texto,@seccion,@autor,@publicado)";
+            comando.CommandText = "INSERT INTO Articulos (titulo,imagen,texto,seccion,autorId,publicado,pdf) VALUES (@titulo,@imagen,@texto,@seccion,@autor,@publicado,@pdf)";
             comando.Parameters.Add("@titulo", SqliteType.Text);
             comando.Parameters.Add("@imagen", SqliteType.Text);
             comando.Parameters.Add("@texto", SqliteType.Text);
             comando.Parameters.Add("@seccion", SqliteType.Text);
             comando.Parameters.Add("@autor", SqliteType.Integer);
             comando.Parameters.Add("@publicado", SqliteType.Integer);
+            comando.Parameters.Add("@pdf", SqliteType.Text);
             comando.Parameters["@titulo"].Value = art.Titulo;
             comando.Parameters["@imagen"].Value = art.Imagen;
             comando.Parameters["@texto"].Value = art.Texto;
             comando.Parameters["@seccion"].Value = art.Seccion;
             comando.Parameters["@autor"].Value = art.Autor.Id;
             comando.Parameters["@publicado"].Value = art.Publicado;
+            comando.Parameters["@pdf"].Value = art.Pdf;
 
             int filas_afectadas = comando.ExecuteNonQuery();
 
