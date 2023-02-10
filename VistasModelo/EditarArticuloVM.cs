@@ -42,6 +42,12 @@ namespace ProyectoDefinitivoDINT.VistasModelo
 
         public EditarArticuloVM()
         {
+            //Mensajería
+            WeakReferenceMessenger.Default.Register<ArticuloValueChangedMessage>(this, (r, m) =>
+            {
+                ArticuloActual = m.Value;
+            });
+
             //Servicios
             cargarCategoriasServicio = new CargarCategoriasServicio();
 
@@ -51,7 +57,7 @@ namespace ProyectoDefinitivoDINT.VistasModelo
 
             //Propiedades
             ListaRedesSociales = cargarCategoriasServicio.CargarCategorias();
-            ArticuloActual = WeakReferenceMessenger.Default.Send<ArticuloRequestMessage>();
+            
         }
 
         public void Aceptar()

@@ -142,7 +142,7 @@
             </inputLayout:SfTextInputLayout>
             <StackPanel DockPanel.Dock="Bottom" Grid.Row="1" HorizontalAlignment="Right" Orientation="Horizontal">
                 <Button Height="40" Width="70" x:Name="btnCancelar"  Command="{}" Template="{DynamicResource cancelButton}" IsCancel="True">Cancelar</Button>
-                <Button Height="40" Width="70" Margin="10,0" x:Name="btnAceptar"  Command="{}" Template="{DynamicResource acceptButton}" IsDefault="True">Aceptar</Button>
+                <Button x:Name="btnAceptar" Height="40" Width="70" Margin="10,0" Command="{Binding Path=AceptarCommand}" Template="{DynamicResource acceptButton}" IsDefault="True" Click="btnAceptar_Click">Aceptar</Button>
             </StackPanel>
         </Grid>
     </Grid>
