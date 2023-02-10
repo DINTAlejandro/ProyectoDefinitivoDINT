@@ -39,13 +39,15 @@ namespace ProyectoDefinitivoDINT.VistasModelo
         public RelayCommand NuevoArticuloCommnad { get; }
 
         //Servicios
-        private AbrirVentanaServicio abrirVentanaServicio = new AbrirVentanaServicio();
+        private AbrirVentanaServicio abrirVentanaServicio;
+        private ServicioBD bbddServicio;
+
         public ListaArticulosControlVM()
         {
-            //Mensajería
-            
 
-
+            //Servícios
+            abrirVentanaServicio = new AbrirVentanaServicio();
+            bbddServicio = new ServicioBD();
 
 
             //Propiedades
@@ -60,18 +62,18 @@ namespace ProyectoDefinitivoDINT.VistasModelo
 
 
             //
-            Articulos = PilaArticulos();
+            Articulos = bbddServicio.GetArticulos();
         }
 
-        public ObservableCollection<Articulo> PilaArticulos()
-        {
-            ObservableCollection<Articulo> ejemploAutores = new ObservableCollection<Articulo>();
-            ejemploAutores.Add(new Articulo("Articulo 1", null, "Artúclo de prueba", "Sección 1", new Autor("Pepe", "@Pepito", "", "Twitter", null), true));
-            ejemploAutores.Add(new Articulo("Articulo 2", null, "Artúclo de prueba", "Sección 2", new Autor("Juan", "@Juanito", "", "Instagram", null), false));
-            ejemploAutores.Add(new Articulo("Articulo 3", null, "Artúclo de prueba", "Sección 3", new Autor("Luis", "@Luisito", "", "Facebook", null), true));
+        //public ObservableCollection<Articulo> PilaArticulos()
+        //{
+        //    ObservableCollection<Articulo> ejemploAutores = new ObservableCollection<Articulo>();
+        //    ejemploAutores.Add(new Articulo("Articulo 1", null, "Artúclo de prueba", "Sección 1", new Autor("Pepe", "@Pepito", "", "Twitter", null), true));
+        //    ejemploAutores.Add(new Articulo("Articulo 2", null, "Artúclo de prueba", "Sección 2", new Autor("Juan", "@Juanito", "", "Instagram", null), false));
+        //    ejemploAutores.Add(new Articulo("Articulo 3", null, "Artúclo de prueba", "Sección 3", new Autor("Luis", "@Luisito", "", "Facebook", null), true));
 
-            return ejemploAutores;
-        }
+        //    return ejemploAutores;
+        //}
 
         //Funciones comandos
         public void EditarArticulo()

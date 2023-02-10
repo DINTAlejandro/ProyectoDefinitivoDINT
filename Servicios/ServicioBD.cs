@@ -10,7 +10,7 @@ using System.Windows;
 
 namespace ProyectoDefinitivoDINT
 {
-    class ServicioBD
+    public class ServicioBD
     {
         public ServicioBD()
         {

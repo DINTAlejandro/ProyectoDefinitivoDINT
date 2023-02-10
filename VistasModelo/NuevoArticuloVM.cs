@@ -31,7 +31,7 @@ namespace ProyectoDefinitivoDINT.VistasModelo
 
         //Servicios
         private CargarCategoriasServicio cargarCategoriasServicio;
-
+        private ServicioBD bbddServicio;
 
         //Comandos
         public RelayCommand AceptarCommand { get; }
@@ -42,6 +42,7 @@ namespace ProyectoDefinitivoDINT.VistasModelo
         {
             //Servicios
             cargarCategoriasServicio = new CargarCategoriasServicio();
+            bbddServicio = new ServicioBD();
 
             //Comandos
             AceptarCommand = new RelayCommand(Aceptar);
@@ -55,7 +56,7 @@ namespace ProyectoDefinitivoDINT.VistasModelo
 
         public void Aceptar()
         {
-
+            bbddServicio.InsertArticles(ArticuloActual);
         }
         public void SeleccionarImagenAutor()
         {
