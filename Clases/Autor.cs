@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace ProyectoDefinitivoDINT.Clases
 {
-    class Autor : ObservableObject
+    public class Autor : ObservableObject
     {
         private int id;
         private string nombre;
@@ -59,6 +59,15 @@ namespace ProyectoDefinitivoDINT.Clases
             this.image = image;
             this.imagenRedSocial = imagenRedSocial;
             this.articulos = articulos;
+        }
+
+        public Autor(string nombre, string nickname, string image, string imagenRedSocial)
+        {
+            this.nombre = nombre;
+            this.nickname = nickname;
+            this.image = image;
+            this.imagenRedSocial = imagenRedSocial;
+            this.articulos = null;
         }
     }
 }

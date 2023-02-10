@@ -1,5 +1,8 @@
 ﻿using Microsoft.Toolkit.Mvvm.ComponentModel;
 using Microsoft.Toolkit.Mvvm.Input;
+using Microsoft.Toolkit.Mvvm.Messaging;
+using ProyectoDefinitivoDINT.Clases;
+using ProyectoDefinitivoDINT.Mensajes;
 using ProyectoDefinitivoDINT.Servicios;
 using System;
 using System.Collections.Generic;
@@ -10,7 +13,7 @@ using System.Threading.Tasks;
 
 namespace ProyectoDefinitivoDINT.VistasModelo
 {
-    class NuevoAutorVM : ObservableObject
+    public class NuevoAutorVM : ObservableObject
     {
         private string nombre;
         public string Nombre
@@ -40,7 +43,13 @@ namespace ProyectoDefinitivoDINT.VistasModelo
             set { SetProperty(ref imagen, value); }
         }
 
+        //Servicios
+        private CargarRedesSocialesServicio cargarRedesSocialesServicio;
+        private ControlErroresServicio controlErroresServicio;
+
+        //Comandos
         public RelayCommand SeleccionarImagenCommand { get; }
+        public RelayCommand AceptarCommand { get; }
 
         private ObservableCollection<string> listaRedesSociales;
         public ObservableCollection<string> ListaRedesSociales
@@ -51,11 +60,23 @@ namespace ProyectoDefinitivoDINT.VistasModelo
 
         public NuevoAutorVM()
         {
+            //Servicios
+            cargarRedesSocialesServicio = new CargarRedesSocialesServicio();
+            controlErroresServicio = new ControlErroresServicio();
+
             //Comandos
             SeleccionarImagenCommand = new RelayCommand(SeleccionarImagenAutor);
+            AceptarCommand = new RelayCommand(ErrorVacio);
 
             //Propiedades
-            ListaRedesSociales = RellenarListaRedesSociales();
+            ListaRedesSociales = cargarRedesSocialesServicio.CargarRedesSociales();
+            //Mensajería
+            //WeakReferenceMessenger.Default.Register<NuevoAutorVM, AutorRequestMessage>
+            //    (this, (r, m) =>
+            //    {
+            //        m.Reply(new Autor(Nombre, Nickname, Imagen, RedSocial));
+            //    }
+            //);
         }
 
         public void SeleccionarImagenAutor()
@@ -64,14 +85,12 @@ namespace ProyectoDefinitivoDINT.VistasModelo
             Imagen = servicioAbrir.ObtenerImagen();
         }
 
-        private ObservableCollection<string> RellenarListaRedesSociales()
+        public void ErrorVacio()
         {
-            ObservableCollection<string> nuevaListaRedesSociales = new ObservableCollection<string>();
-            nuevaListaRedesSociales.Add("Twitter");
-            nuevaListaRedesSociales.Add("Instagram");
-            nuevaListaRedesSociales.Add("Facebook");
-
-            return nuevaListaRedesSociales;
+            if(Nombre == "" || Nickname == "" || RedSocial == "" || Imagen == "")
+                controlErroresServicio.ErrorCamposVacios();
         }
+
+
     }
 }

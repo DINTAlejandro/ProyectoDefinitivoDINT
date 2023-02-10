@@ -8,8 +8,8 @@ using System.Threading.Tasks;
 
 namespace ProyectoDefinitivoDINT.Mensajes
 {
-    class AutorRequestMessage : RequestMessage<Autor>
+    class ArticuloValueChangedMessage : ValueChangedMessage<Articulo>
     {
-
+        public ArticuloValueChangedMessage(Articulo articulo) : base(articulo) { }
     }
 }

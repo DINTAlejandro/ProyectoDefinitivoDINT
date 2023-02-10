@@ -13,14 +13,14 @@ using System.Threading.Tasks;
 
 namespace ProyectoDefinitivoDINT.VistasModelo
 {
-    public class EditarAutorVM : ObservableRecipient
+    public class EditarArticuloVM : ObservableRecipient
     {
         //Propiedades
-        private Autor autorActual;
-        public Autor AutorActual
+        private Articulo articuloActual;
+        public Articulo ArticuloActual
         {
-            get { return autorActual; }
-            set { SetProperty(ref autorActual, value); }
+            get { return articuloActual; }
+            set { SetProperty(ref articuloActual, value); }
         }
 
         private ObservableCollection<string> listaRedesSociales;
@@ -30,31 +30,45 @@ namespace ProyectoDefinitivoDINT.VistasModelo
             set { SetProperty(ref listaRedesSociales, value); }
         }
 
-        //Servicios
-        CargarRedesSocialesServicio cargarRedesSocialesServicio;
 
-        
-        
+
+        //Servicios
+        private CargarCategoriasServicio cargarCategoriasServicio;
+
+
         //Comandos
+        public RelayCommand AceptarCommand { get; }
         public RelayCommand SeleccionarImagenCommand { get; }
-        
-        public EditarAutorVM()
+
+        public EditarArticuloVM()
         {
+            //Mensajería
+            WeakReferenceMessenger.Default.Register<ArticuloValueChangedMessage>(this, (r, m) =>
+            {
+                ArticuloActual = m.Value;
+            });
+
             //Servicios
-            cargarRedesSocialesServicio = new CargarRedesSocialesServicio();
+            cargarCategoriasServicio = new CargarCategoriasServicio();
 
             //Comandos
+            AceptarCommand = new RelayCommand(Aceptar);
             SeleccionarImagenCommand = new RelayCommand(SeleccionarImagenAutor);
 
             //Propiedades
-            ListaRedesSociales = cargarRedesSocialesServicio.CargarRedesSociales();
-            AutorActual = WeakReferenceMessenger.Default.Send<AutorRequestMessage>();
+            ListaRedesSociales = cargarCategoriasServicio.CargarCategorias();
+            
         }
 
+        public void Aceptar()
+        {
+            
+        }
         public void SeleccionarImagenAutor()
         {
             AbrirImagenesServicio servicioAbrir = new AbrirImagenesServicio();
-            AutorActual.Image = servicioAbrir.ObtenerImagen();
+            ArticuloActual.Imagen = servicioAbrir.ObtenerImagen();
         }
+
     }
 }

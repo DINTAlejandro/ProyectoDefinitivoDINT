@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ProyectoDefinitivoDINT.Clases
 {
-    class Articulo : ObservableObject
+    public class Articulo : ObservableObject
     {
         private string titulo;
         private int id;

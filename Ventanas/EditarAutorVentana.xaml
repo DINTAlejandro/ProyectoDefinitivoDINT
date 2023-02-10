@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:ProyectoDefinitivoDINT.Ventanas"
         mc:Ignorable="d"
         xmlns:inputLayout="http://schemas.syncfusion.com/wpf"
-        Title="Editar autor" 
+        Title="Editar articulo" 
         Height="550" Width="350"
         ResizeMode="NoResize" 
         ShowInTaskbar="False" 
@@ -120,7 +120,7 @@
             <TextBox x:Name="tbxNickName" Text="{Binding Path=AutorActual.Nickname}"></TextBox>
         </inputLayout:SfTextInputLayout>
         <inputLayout:SfTextInputLayout Hint="Red social" HelperText="Elegir la red social correspondiente" Margin="10">
-            <ComboBox x:Name="cbxRedSocial" Width="150" ItemsSource="{Binding Path=ListaRedesSociales}" SelectedItem="{Binding Path=AutorActual.Redsocial}"></ComboBox>
+            <ComboBox x:Name="cbxRedSocial" Width="150" ItemsSource="{Binding Path=ListaRedesSociales}" SelectedItem="{Binding Path=AutorActual.ImagenRedSocial}"></ComboBox>
         </inputLayout:SfTextInputLayout>
 
         <Border BorderBrush="Black" BorderThickness="1" CornerRadius="2">
