@@ -29,6 +29,11 @@ namespace ProyectoDefinitivoDINT.Clases
             get { return imagen; }
             set { SetProperty(ref imagen, value); }
         }
+        public string Pdf
+        {
+            get { return pdf; }
+            set { SetProperty(ref pdf, value); }
+        }
         public string Texto
         {
             get { return texto; }

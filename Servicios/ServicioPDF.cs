@@ -3,6 +3,8 @@ using QuestPDF.Fluent;
 using QuestPDF.Helpers;
 using QuestPDF.Infrastructure;
 using System;
+using System.IO;
+using System.Threading;
 
 namespace ProyectoDefinitivoDINT.Servicios
 {
@@ -10,9 +12,17 @@ namespace ProyectoDefinitivoDINT.Servicios
     {
 
 
-        public void GenerarPDF(Articulo articulo)
+        public string GenerarPDF(Articulo articulo)
         {
             // Sustituir los campos de ejemplo por los del articulo
+            ServicioAzure azure = new ServicioAzure();
+            string fotoAutor = azure.DescargarFoto(articulo.Autor.Image);
+            string fotoArticulo = azure.DescargarFoto(articulo.Imagen);
+            string nombrepdf = articulo.Autor.Nombre + articulo.Titulo + ".pdf";
+            var streamautor = new FileStream(fotoAutor, FileMode.Open);
+            var streamarticulo = new FileStream(fotoArticulo, FileMode.Open);
+
+
 
             Document.Create(container =>
             {
@@ -33,12 +43,12 @@ namespace ProyectoDefinitivoDINT.Servicios
                         {
                             x.Spacing(20);
 
-                            x.Item().Image(articulo.Imagen);
+                            x.Item().Image(streamarticulo);
                             x.Item().Text(articulo.Texto);
                             x.Item().Row(y =>
                             {
                                 y.AutoItem().PaddingHorizontal(150);
-                                y.AutoItem().Width(1, Unit.Centimetre).Image(articulo.Autor.Image);
+                                y.AutoItem().Width(1, Unit.Centimetre).Image(streamautor);
                                 y.AutoItem().Text(articulo.Autor.Nombre);
                                 y.AutoItem().PaddingHorizontal(10).LineVertical(1).LineColor(Colors.Grey.Medium);
                                 y.AutoItem().Width(1, Unit.Centimetre).Image("Instagram.png");
@@ -51,7 +61,12 @@ namespace ProyectoDefinitivoDINT.Servicios
                         .Text("Articulo.pdf");
                 });
             })
-            .GeneratePdf("output.pdf");
+            .GeneratePdf(nombrepdf);
+            streamarticulo.Close();
+            streamautor.Close();
+            File.Delete(fotoAutor);
+            File.Delete(fotoArticulo);
+            return nombrepdf;
         }
 
     }
