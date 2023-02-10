@@ -79,6 +79,7 @@ namespace ProyectoDefinitivoDINT.VistasModelo
         public void EditarArticulo()
         {
             abrirVentanaServicio.AbrirEditarArticulo();
+            Articulos = bbddServicio.GetArticulos();
         }
 
         public void EliminarArticulo()
@@ -95,6 +96,7 @@ namespace ProyectoDefinitivoDINT.VistasModelo
         public void NuevoArticulo()
         {
             abrirVentanaServicio.AbrirCrearArticulo();
+            Articulos = bbddServicio.GetArticulos();
         }
     }
 }

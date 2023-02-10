@@ -24,16 +24,18 @@ namespace ProyectoDefinitivoDINT
     /// </summary>
     public partial class MainWindow : Window
     {
-        
+        private MainWindowVM vm;
         public MainWindow()
         {
-
             InitializeComponent();
             ObservableCollection<Articulo> articulos = new ObservableCollection<Articulo>();
-            Autor autor = new Autor("Juan","_juanMateo","autor1.jpg","",articulos);
-            Articulo articulo = new Articulo("Prueba", "prueba2bin.jpg", "Texto prueba", "Seccion 3", autor, false);
+            //Autor autor = new Autor("Juan","_juanMateo","autor1.jpg","",articulos);
+            //Articulo articulo = new Articulo("Prueba", "prueba2bin.jpg", "Texto prueba", "Seccion 3", autor, false);
             ServicioPdf pdf = new ServicioPdf();
-            pdf.GenerarPDF(articulo);
+            //pdf.GenerarPDF(articulo);
+
+            vm = new MainWindowVM();
+            this.DataContext = vm;
         }
     }
 }

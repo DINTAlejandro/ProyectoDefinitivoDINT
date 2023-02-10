@@ -3,6 +3,7 @@ using Microsoft.Toolkit.Mvvm.ComponentModel;
 using ProyectoDefinitivoDINT.Clases;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -41,7 +42,7 @@ namespace ProyectoDefinitivoDINT
             conexion.Close();
         }
 
-        public List<Autor> GetAutors()
+        public ObservableCollection<Autor> GetAutors()
         {
             SqliteConnection conexion = new SqliteConnection("Data Source=RevistaAutores.db");
             conexion.Open();
@@ -50,7 +51,7 @@ namespace ProyectoDefinitivoDINT
             comando.CommandText = "SELECT * FROM Autores";
             SqliteDataReader lector = comando.ExecuteReader();
 
-            List<Autor> AllAutor = new List<Autor>();
+            ObservableCollection<Autor> AllAutor = new ObservableCollection<Autor>();
 
             if (lector.HasRows)
             {
@@ -72,7 +73,7 @@ namespace ProyectoDefinitivoDINT
             return AllAutor;
         }
 
-        public List<Articulo> GetArticulos()
+        public ObservableCollection<Articulo> GetArticulos()
         {
             SqliteConnection conexion = new SqliteConnection("Data Source=RevistaAutores.db");
             conexion.Open();
@@ -81,7 +82,7 @@ namespace ProyectoDefinitivoDINT
             comando.CommandText = "SELECT * FROM Articulos";
             SqliteDataReader lector = comando.ExecuteReader();
 
-            List<Articulo> AllArticles = new List<Articulo>();
+            ObservableCollection<Articulo> AllArticles = new ObservableCollection<Articulo>();
 
             if (lector.HasRows)
             {
@@ -106,7 +107,7 @@ namespace ProyectoDefinitivoDINT
             return AllArticles;
         }
 
-        public List<string> GetSecciones()
+        public ObservableCollection<string> GetSecciones()
         {
 
             SqliteConnection conexion = new SqliteConnection("Data Source=RevistaAutores.db");
@@ -116,7 +117,7 @@ namespace ProyectoDefinitivoDINT
             comando.CommandText = "SELECT * FROM Secciones";
             SqliteDataReader lector = comando.ExecuteReader();
 
-            List<string> AllSeccion = new List<string>();
+            ObservableCollection<string> AllSeccion = new ObservableCollection<string>();
 
             if (lector.HasRows)
             {
