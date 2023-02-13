@@ -38,10 +38,15 @@ namespace ProyectoDefinitivoDINT.VistasModelo
         public RelayCommand NuevoAutorCommnad { get; }
 
         //Servicios
-        private AbrirVentanaServicio abrirVentanaServicio = new AbrirVentanaServicio();
+        private AbrirVentanaServicio abrirVentanaServicio;
+        private ServicioBD bbddServicio;
 
         public ListaAutoresControlVM()
         {
+            //Servicios
+            abrirVentanaServicio = new AbrirVentanaServicio();
+            bbddServicio = new ServicioBD();
+
             //Mensajería
             WeakReferenceMessenger.Default.Register<ListaAutoresControlVM, AutorRequestMessage>
                 (this, (r, m) =>
@@ -49,44 +54,32 @@ namespace ProyectoDefinitivoDINT.VistasModelo
                     m.Reply(AutorActual);
                 }
             );
-            
-
-
-            //Propiedades
-            AutorActual = null;
-            Autores = new ObservableCollection<Autor>();
 
             //Comandos
             EditarAutorCommand = new RelayCommand(EditarAutor);
             EliminarAutorCommand = new RelayCommand(EliminarAutor);
             VerAutorCommand = new RelayCommand(VerAutor);
             NuevoAutorCommnad = new RelayCommand(NuevoAutor);
-            
 
-            //
-            Autores = PilaAutores();
-        }
+            //Propiedades
+            AutorActual = null;
+            Autores = new ObservableCollection<Autor>();
+            Autores = bbddServicio.GetAutors();
 
-        public ObservableCollection<Autor> PilaAutores()
-        {
-            ObservableCollection<Autor> ejemploAutores = new ObservableCollection<Autor>();
-            ejemploAutores.Add(new Autor("Pepe", "@Pepito", "", "Twitter", null));
-            ejemploAutores.Add(new Autor("Juan", "@Juan", "", "Facebook", null));
-            ejemploAutores.Add(new Autor("Ramón", "@Ramón", "", "Instagram", null));
-
-            return ejemploAutores;
         }
 
         //Funciones comandos
         public void EditarAutor()
         {
             abrirVentanaServicio.AbrirEditarAutor();
+            Autores = bbddServicio.GetAutors();
         }
 
         public void EliminarAutor()
         {
             //Remove consulta
-            Autores.Remove(AutorActual);
+            bbddServicio.DeleteAutor(AutorActual);
+            Autores = bbddServicio.GetAutors();
         }
 
         public void VerAutor()
@@ -97,6 +90,7 @@ namespace ProyectoDefinitivoDINT.VistasModelo
         public void NuevoAutor()
         {
             abrirVentanaServicio.AbrirCrearAutor();
+            Autores = bbddServicio.GetAutors();
         }
     }
 }

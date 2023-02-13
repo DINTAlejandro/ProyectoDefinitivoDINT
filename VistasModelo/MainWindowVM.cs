@@ -1,4 +1,5 @@
 ﻿using Microsoft.Toolkit.Mvvm.ComponentModel;
+using Microsoft.Toolkit.Mvvm.Input;
 using ProyectoDefinitivoDINT.Controles;
 using ProyectoDefinitivoDINT.Servicios;
 using System;
@@ -12,6 +13,7 @@ namespace ProyectoDefinitivoDINT.VistasModelo
 {
     class MainWindowVM : ObservableObject
     {
+        //Propiedades
         private Control vistaActual;
 
         
@@ -21,11 +23,33 @@ namespace ProyectoDefinitivoDINT.VistasModelo
             set { SetProperty(ref vistaActual, value); }
         }
 
+        //Servicios
+        private CargarControlServicio cargarControlServicio;
+
+        //Comandos
+        public RelayCommand VistaAutoresCommand{ get; }
+        public RelayCommand VistaArticulosCommand { get; }
+
         public MainWindowVM()
         {
-            //Servicios
-            CargarControlServicio cargarControlServicio = new CargarControlServicio();
+            //Comandos
+            VistaArticulosCommand = new RelayCommand(VistaArticulos);
+            VistaAutoresCommand = new RelayCommand(VistaAutores);
 
+            //Servicios
+            cargarControlServicio = new CargarControlServicio();
+
+            VistaActual = cargarControlServicio.ListaAutores();
+
+        }
+
+        private void VistaAutores()
+        {
+            VistaActual = cargarControlServicio.ListaAutores();
+        }
+
+        private void VistaArticulos()
+        {
             VistaActual = cargarControlServicio.ListaArticulos();
         }
 

@@ -9,12 +9,12 @@
         Title="Revista" Height="450" Width="800">
     <DockPanel>
         <syncfusion:SfNavigationDrawer x:Name="navigationDrawer" DisplayMode="Compact">
-            <syncfusion:NavigationItem Header="Artículos" IsExpanded="True" IsSelected="True">
+            <syncfusion:NavigationItem Header="Artículos" IsExpanded="True" Command="{Binding Path=VistaArticulosCommand}">
                 <syncfusion:NavigationItem.Icon>
                     <Image VerticalAlignment="Center" HorizontalAlignment="Center" Height="15" Source="/Recursos/articulo_icono.ico"></Image>
                 </syncfusion:NavigationItem.Icon>
             </syncfusion:NavigationItem>
-            <syncfusion:NavigationItem Header="Autores">
+            <syncfusion:NavigationItem Header="Autores" IsSelected="True" Command="{Binding Path=VistaAutoresCommand}">
                 <syncfusion:NavigationItem.Icon>
                     <Image VerticalAlignment="Center" HorizontalAlignment="Center" Height="15" Source="/Recursos/autor_icono.ico"></Image>
                 </syncfusion:NavigationItem.Icon>

@@ -27,5 +27,10 @@ namespace ProyectoDefinitivoDINT.Ventanas
             vm = new EditarAutorVM();
             this.DataContext = vm;
         }
+
+        private void btnAceptar_Click(object sender, RoutedEventArgs e)
+        {
+            DialogResult = true;
+        }
     }
 }

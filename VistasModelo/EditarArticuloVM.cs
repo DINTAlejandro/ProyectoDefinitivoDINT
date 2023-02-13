@@ -30,15 +30,23 @@ namespace ProyectoDefinitivoDINT.VistasModelo
             set { SetProperty(ref listaRedesSociales, value); }
         }
 
+        private ObservableCollection<Autor> listaAutores;
+        public ObservableCollection<Autor> ListaAutores
+        {
+            get { return listaAutores; }
+            set { SetProperty(ref listaAutores, value); }
+        }
 
 
         //Servicios
         private CargarCategoriasServicio cargarCategoriasServicio;
-
+        private ServicioBD bbddServicio;
 
         //Comandos
         public RelayCommand AceptarCommand { get; }
         public RelayCommand SeleccionarImagenCommand { get; }
+
+
 
         public EditarArticuloVM()
         {
@@ -50,6 +58,7 @@ namespace ProyectoDefinitivoDINT.VistasModelo
 
             //Servicios
             cargarCategoriasServicio = new CargarCategoriasServicio();
+            bbddServicio = new ServicioBD();
 
             //Comandos
             AceptarCommand = new RelayCommand(Aceptar);
@@ -57,12 +66,12 @@ namespace ProyectoDefinitivoDINT.VistasModelo
 
             //Propiedades
             ListaRedesSociales = cargarCategoriasServicio.CargarCategorias();
-            
+            ListaAutores = bbddServicio.GetAutors();
         }
 
         public void Aceptar()
         {
-            
+            bbddServicio.InsertArticles(ArticuloActual);
         }
         public void SeleccionarImagenAutor()
         {

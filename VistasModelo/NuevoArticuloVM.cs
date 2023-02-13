@@ -28,6 +28,13 @@ namespace ProyectoDefinitivoDINT.VistasModelo
             set { SetProperty(ref listaCategorias, value); }
         }
 
+        private ObservableCollection<Autor> listaAutores;
+        public ObservableCollection<Autor> ListaAutores
+        {
+            get { return listaAutores; }
+            set { SetProperty(ref listaAutores, value); }
+        }
+
 
         //Servicios
         private CargarCategoriasServicio cargarCategoriasServicio;
@@ -51,7 +58,9 @@ namespace ProyectoDefinitivoDINT.VistasModelo
             //Propiedades
             ArticuloActual = new Articulo();
             ListaCategorias = cargarCategoriasServicio.CargarCategorias();
-            
+            ListaAutores = bbddServicio.GetAutors();
+
+
         }
 
         public void Aceptar()

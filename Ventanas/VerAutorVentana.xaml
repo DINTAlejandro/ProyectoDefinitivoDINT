@@ -49,19 +49,19 @@
 
     <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
         <inputLayout:SfTextInputLayout Hint="Nombre" HelperText="Nombre del autor" Margin="10">
-            <TextBlock x:Name="tbkNombre" Text="{Binding Path=AutorActual.Nombre}"></TextBlock>
+            <TextBox x:Name="tbkNombre" IsReadOnly="True" Text="{Binding Path=AutorActual.Nombre}"></TextBox>
         </inputLayout:SfTextInputLayout>
 
         <inputLayout:SfTextInputLayout Hint="@Manuel23" HelperText="Nickname" Margin="10">
-            <TextBlock x:Name="tbkNickName" Text="{Binding Path=AutorActual.Nickname}"></TextBlock>
+            <TextBox x:Name="tbkNickName" IsReadOnly="True" Text="{Binding Path=AutorActual.Nickname}"></TextBox>
         </inputLayout:SfTextInputLayout>
 
         <inputLayout:SfTextInputLayout Hint="Red social" HelperText="Elegir la red social correspondiente" Margin="10">
-            <TextBlock x:Name="tbkRedSocial" Width="150" Text="{Binding Path=AutorActual.ListaRedesSociales}"></TextBlock>
+            <TextBox x:Name="tbkRedSocial" IsReadOnly="True" Width="150" Text="{Binding Path=AutorActual.ImagenRedSocial}"></TextBox>
         </inputLayout:SfTextInputLayout>
 
         <Border BorderBrush="Black" BorderThickness="1" CornerRadius="2">
-            <Image Source="{Binding Path=AutorActual.Imagen}" Height="200" Width="230"></Image>
+            <Image Source="{Binding Path=AutorActual.Image}" Height="200" Width="230"></Image>
         </Border>
 
 
