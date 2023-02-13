@@ -162,6 +162,35 @@ namespace ProyectoDefinitivoDINT
             return TheAutor;
         }
 
+        public Autor GetAutorByNickname(string nick)
+        {
+            SqliteConnection conexion = new SqliteConnection("Data Source=RevistaAutores.db");
+            conexion.Open();
+            SqliteCommand comando = conexion.CreateCommand();
+
+            comando.CommandText = "SELECT * FROM Autores WHERE nickname = @nick";
+            comando.Parameters.Add("@nick", SqliteType.Text);
+            comando.Parameters["@nick"].Value = nick;
+            SqliteDataReader lector = comando.ExecuteReader();
+
+            Autor TheAutor = new Autor();
+
+            if (lector.HasRows)
+            {
+                lector.Read();
+                TheAutor.Id = lector.GetInt32(0);
+                TheAutor.Nombre = lector.GetString(1);
+                TheAutor.Nickname = lector.GetString(2);
+                TheAutor.Image = lector.GetString(3);
+                TheAutor.ImagenRedSocial = lector.GetString(4);
+            }
+
+            lector.Close();
+            conexion.Close();
+
+            return TheAutor;
+        }
+
         public Articulo GetArticuloById(int id)
         {
             SqliteConnection conexion = new SqliteConnection("Data Source=RevistaAutores.db");

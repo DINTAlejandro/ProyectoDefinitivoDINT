@@ -20,7 +20,13 @@ namespace ProyectoDefinitivoDINT.VistasModelo
             get { return articuloActual; }
             set { SetProperty(ref articuloActual, value); }
         }
-
+        
+        private string nickNameActual;
+        public string NickNameActual
+        {
+            get { return nickNameActual; }
+            set { SetProperty(ref nickNameActual, value); }
+        }
         private ObservableCollection<string> listaCategorias;
         public ObservableCollection<string> ListaCategorias
         {
@@ -29,10 +35,12 @@ namespace ProyectoDefinitivoDINT.VistasModelo
         }
 
         private ObservableCollection<Autor> listaAutores;
-        public ObservableCollection<Autor> ListaAutores
+
+        private ObservableCollection<string> listaAutoresNickname;
+        public ObservableCollection<string> ListaAutoresNickname
         {
-            get { return listaAutores; }
-            set { SetProperty(ref listaAutores, value); }
+            get { return listaAutoresNickname; }
+            set { SetProperty(ref listaAutoresNickname, value); }
         }
 
 
@@ -44,9 +52,11 @@ namespace ProyectoDefinitivoDINT.VistasModelo
         public RelayCommand AceptarCommand { get; }
         
         public RelayCommand SeleccionarImagenCommand { get; }
+        public RelayCommand NuevaSeccionCommand { get; }
 
         public NuevoArticuloVM()
         {
+            
             //Servicios
             cargarCategoriasServicio = new CargarCategoriasServicio();
             bbddServicio = new ServicioBD();
@@ -57,16 +67,28 @@ namespace ProyectoDefinitivoDINT.VistasModelo
 
             //Propiedades
             ArticuloActual = new Articulo();
-            ListaCategorias = cargarCategoriasServicio.CargarCategorias();
-            ListaAutores = bbddServicio.GetAutors();
+            ListaCategorias = bbddServicio.GetSecciones();
+            listaAutores = bbddServicio.GetAutors();
+            ListaAutoresNickname = new ObservableCollection<string>();
 
-
+            foreach(Autor a in listaAutores)
+            {
+                ListaAutoresNickname.Add(a.Nickname);
+            }
         }
 
         public void Aceptar()
         {
+            ArticuloActual.Pdf = "";
+            ArticuloActual.Autor = bbddServicio.GetAutorByNickname(NickNameActual);
             bbddServicio.InsertArticles(ArticuloActual);
         }
+
+        public void NuevaSeccion()
+        {
+
+        }
+
         public void SeleccionarImagenAutor()
         {
             AbrirImagenesServicio servicioAbrir = new AbrirImagenesServicio();

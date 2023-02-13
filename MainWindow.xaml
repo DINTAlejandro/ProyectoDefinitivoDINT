@@ -7,6 +7,7 @@
         mc:Ignorable="d"
         xmlns:syncfusion="http://schemas.syncfusion.com/wpf"
         Title="Revista" Height="450" Width="800">
+
     <DockPanel>
         <syncfusion:SfNavigationDrawer x:Name="navigationDrawer" DisplayMode="Compact">
             <syncfusion:NavigationItem Header="Artículos" IsExpanded="True" Command="{Binding Path=VistaArticulosCommand}">
