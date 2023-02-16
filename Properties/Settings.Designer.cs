@@ -32,5 +32,14 @@ namespace ProyectoDefinitivoDINT.Properties {
                 return ((string)(this["key"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("https://moderadorrevista.cognitiveservices.azure.com/")]
+        public string endpoint {
+            get {
+                return ((string)(this["endpoint"]));
+            }
+        }
     }
 }

@@ -221,6 +221,7 @@
     <Compile Include="Servicios\ServicioAutor.cs" />
     <Compile Include="Servicios\ServicioAzure.cs" />
     <Compile Include="Servicios\ServicioBD.cs" />
+    <Compile Include="Servicios\ServicioModeracion.cs" />
     <Compile Include="Servicios\ServicioPdf.cs" />
     <Compile Include="Ventanas\EditarArticuloVentana.xaml.cs">
       <DependentUpon>EditarArticuloVentana.xaml</DependentUpon>
