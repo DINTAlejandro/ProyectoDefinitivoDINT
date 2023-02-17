@@ -3,6 +3,7 @@ using Microsoft.Toolkit.Mvvm.Input;
 using Microsoft.Toolkit.Mvvm.Messaging;
 using ProyectoDefinitivoDINT.Clases;
 using ProyectoDefinitivoDINT.Mensajes;
+using ProyectoDefinitivoDINT.Servicios;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -41,6 +42,8 @@ namespace ProyectoDefinitivoDINT.VistasModelo
         //Servicios
         private AbrirVentanaServicio abrirVentanaServicio;
         private ServicioBD bbddServicio;
+        private ServicioPdf servicioPdf;
+        private ServicioAzure servicioAzure;
 
         public ListaArticulosControlVM()
         {
@@ -55,7 +58,8 @@ namespace ProyectoDefinitivoDINT.VistasModelo
             //Servícios
             abrirVentanaServicio = new AbrirVentanaServicio();
             bbddServicio = new ServicioBD();
-
+            servicioPdf = new ServicioPdf();
+            servicioAzure = new ServicioAzure();
 
             //Propiedades
             ArticuloActual = null;
@@ -85,7 +89,13 @@ namespace ProyectoDefinitivoDINT.VistasModelo
         //Funciones comandos
         public void PublicarArticulo()
         {
-            Articulos = bbddServicio.GetArticulos();
+            if(ArticuloActual != null)
+            {
+                ArticuloActual.Autor.Image = servicioAzure.SubirFoto(ArticuloActual.Autor.Image);
+                ArticuloActual.Imagen = servicioAzure.SubirFoto(ArticuloActual.Imagen);
+                ArticuloActual.Pdf = servicioPdf.GenerarPDF(ArticuloActual);
+                ArticuloActual.Pdf = servicioAzure.SubirPdf(ArticuloActual.Pdf);
+            }
         }
 
         public void EliminarArticulo()
