@@ -1,0 +1,18 @@
+﻿<Window x:Class="ProyectoDefinitivoDINT.Ventanas.NuevaCategoria"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ProyectoDefinitivoDINT.Ventanas"
+        mc:Ignorable="d"
+        Title="Introduce una nueva categoría" Height="350" Width="400">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <StackPanel Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Center">
+            <TextBox Width="200" Text="{Binding Path=Categoria}"></TextBox>
+            <Button>Añadir</Button>
+        </StackPanel>
+    </Grid>
+</Window>

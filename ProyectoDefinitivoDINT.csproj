@@ -228,6 +228,9 @@
     <Compile Include="Ventanas\EditarAutorVentana.xaml.cs">
       <DependentUpon>EditarAutorVentana.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Ventanas\NuevaCategoria.xaml.cs">
+      <DependentUpon>NuevaCategoria.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Ventanas\NuevoArticuloVentana.xaml.cs">
       <DependentUpon>NuevoArticuloVentana.xaml</DependentUpon>
     </Compile>
@@ -245,6 +248,7 @@
     <Compile Include="VistasModelo\ListaArticulosControlVM.cs" />
     <Compile Include="VistasModelo\ListaAutoresControlVM.cs" />
     <Compile Include="VistasModelo\MainWindowVM.cs" />
+    <Compile Include="VistasModelo\NuevaCategoriaVM.cs" />
     <Compile Include="VistasModelo\NuevoArticuloVM.cs" />
     <Compile Include="VistasModelo\NuevoAutorVM.cs" />
     <Compile Include="VistasModelo\VerArticuloVM.cs" />
@@ -274,6 +278,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Ventanas\EditarAutorVentana.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Ventanas\NuevaCategoria.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
