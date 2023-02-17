@@ -27,5 +27,10 @@ namespace ProyectoDefinitivoDINT.Ventanas
             vm = new NuevaCategoriaVM();
             this.DataContext = vm;
         }
+
+        private void btnAdd_Click(object sender, RoutedEventArgs e)
+        {
+            DialogResult = true;
+        }
     }
 }

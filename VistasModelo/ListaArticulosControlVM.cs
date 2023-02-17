@@ -33,7 +33,7 @@ namespace ProyectoDefinitivoDINT.VistasModelo
         }
 
         //Comandos
-        public RelayCommand EditarArticuloCommand { get; }
+        public RelayCommand PublicarArticuloCommand { get; }
         public RelayCommand EliminarArticuloCommand { get; }
         public RelayCommand VerArticuloCommand { get; }
         public RelayCommand NuevoArticuloCommnad { get; }
@@ -62,7 +62,7 @@ namespace ProyectoDefinitivoDINT.VistasModelo
             Articulos = new ObservableCollection<Articulo>();
 
             //Comandos
-            EditarArticuloCommand = new RelayCommand(EditarArticulo);
+            PublicarArticuloCommand = new RelayCommand(PublicarArticulo);
             EliminarArticuloCommand = new RelayCommand(EliminarArticulo);
             VerArticuloCommand = new RelayCommand(VerArticulo);
             NuevoArticuloCommnad = new RelayCommand(NuevoArticulo);
@@ -83,7 +83,7 @@ namespace ProyectoDefinitivoDINT.VistasModelo
         //}
 
         //Funciones comandos
-        public void EditarArticulo()
+        public void PublicarArticulo()
         {
             abrirVentanaServicio.AbrirEditarArticulo();
             Articulos = bbddServicio.GetArticulos();
