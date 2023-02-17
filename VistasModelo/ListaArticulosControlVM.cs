@@ -44,6 +44,13 @@ namespace ProyectoDefinitivoDINT.VistasModelo
 
         public ListaArticulosControlVM()
         {
+            //Mensajería
+            WeakReferenceMessenger.Default.Register<ListaArticulosControlVM, ArticuloRequestMessage>
+                (this, (r, m) =>
+                {
+                    m.Reply(ArticuloActual);
+                }
+            );
 
             //Servícios
             abrirVentanaServicio = new AbrirVentanaServicio();
