@@ -68,13 +68,14 @@ namespace ProyectoDefinitivoDINT.Clases
 
         public Articulo(string titulo, string imagen, string texto, string seccion, Autor autor, bool publicado, string pdf)
         {
-            this.titulo = titulo;
-            this.imagen = imagen;
-            this.texto = texto;
-            this.seccion = seccion;
-            this.autor = autor;
-            this.publicado = publicado;
-            this.pdf = pdf;
+            this.Titulo = titulo;
+            this.Imagen = imagen;
+            this.Texto = texto;
+            this.Seccion = seccion;
+            this.Autor = autor;
+            this.Publicado = publicado;
+            this.Pdf = pdf;
+            this.Id = 0;
         }
     }
 }

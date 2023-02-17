@@ -46,6 +46,7 @@ namespace ProyectoDefinitivoDINT.VistasModelo
         //Servicios
         private CargarRedesSocialesServicio cargarRedesSocialesServicio;
         private ControlErroresServicio controlErroresServicio;
+        private ServicioBD bbddServicio;
 
         //Comandos
         public RelayCommand SeleccionarImagenCommand { get; }
@@ -63,20 +64,14 @@ namespace ProyectoDefinitivoDINT.VistasModelo
             //Servicios
             cargarRedesSocialesServicio = new CargarRedesSocialesServicio();
             controlErroresServicio = new ControlErroresServicio();
+            bbddServicio = new ServicioBD();
 
             //Comandos
             SeleccionarImagenCommand = new RelayCommand(SeleccionarImagenAutor);
-            AceptarCommand = new RelayCommand(ErrorVacio);
+            AceptarCommand = new RelayCommand(Aceptar);
 
             //Propiedades
             ListaRedesSociales = cargarRedesSocialesServicio.CargarRedesSociales();
-            //Mensajería
-            //WeakReferenceMessenger.Default.Register<NuevoAutorVM, AutorRequestMessage>
-            //    (this, (r, m) =>
-            //    {
-            //        m.Reply(new Autor(Nombre, Nickname, Imagen, RedSocial));
-            //    }
-            //);
         }
 
         public void SeleccionarImagenAutor()
@@ -85,10 +80,12 @@ namespace ProyectoDefinitivoDINT.VistasModelo
             Imagen = servicioAbrir.ObtenerImagen();
         }
 
-        public void ErrorVacio()
+        public void Aceptar()
         {
-            if(Nombre == "" || Nickname == "" || RedSocial == "" || Imagen == "")
+            if (Nombre == "" || Nickname == "" || RedSocial == "" || Imagen == "")
                 controlErroresServicio.ErrorCamposVacios();
+            else
+                bbddServicio.InsertAutor(new Autor(Nombre, Nickname, Imagen, RedSocial,null));
         }
 
 

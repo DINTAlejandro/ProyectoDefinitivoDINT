@@ -119,8 +119,8 @@
             <inputLayout:SfTextInputLayout Hint="Nombre" HelperText="Nombre del articulo" Margin="10">
                 <TextBox x:Name="tbxTitulo" Text="{Binding Path=ArticuloActual.Titulo}"></TextBox>
             </inputLayout:SfTextInputLayout>
-            <inputLayout:SfTextInputLayout Hint="@Nickname" HelperText="Nickname del autor" Margin="10">
-                <TextBox x:Name="tbxNickname" Text="{Binding Path=ArticuloActual.Autor.Nickname}"></TextBox>
+            <inputLayout:SfTextInputLayout Hint="Autor" HelperText="Elegir el autor del artículo" Margin="10">
+                <ComboBox x:Name="cbxAutor" Width="150" ItemsSource="{Binding Path=ListaAutores}" SelectedItem="{Binding Path=ArticuloActual.Autor.Nickname}"></ComboBox>
             </inputLayout:SfTextInputLayout>
             <inputLayout:SfTextInputLayout Hint="Seccion" HelperText="Elegir la seccion del artículo" Margin="10">
                 <ComboBox x:Name="cbxSeccion" Width="150" ItemsSource="{Binding Path=ListaRedesSociales}" SelectedItem="{Binding Path=ArticuloActual.Seccion}"></ComboBox>

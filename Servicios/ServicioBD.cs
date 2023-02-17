@@ -3,6 +3,7 @@ using Microsoft.Toolkit.Mvvm.ComponentModel;
 using ProyectoDefinitivoDINT.Clases;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,7 +11,7 @@ using System.Windows;
 
 namespace ProyectoDefinitivoDINT
 {
-    class ServicioBD
+    public class ServicioBD
     {
         public ServicioBD()
         {
@@ -41,7 +42,7 @@ namespace ProyectoDefinitivoDINT
             conexion.Close();
         }
 
-        public List<Autor> GetAutors()
+        public ObservableCollection<Autor> GetAutors()
         {
             SqliteConnection conexion = new SqliteConnection("Data Source=RevistaAutores.db");
             conexion.Open();
@@ -50,7 +51,7 @@ namespace ProyectoDefinitivoDINT
             comando.CommandText = "SELECT * FROM Autores";
             SqliteDataReader lector = comando.ExecuteReader();
 
-            List<Autor> AllAutor = new List<Autor>();
+            ObservableCollection<Autor> AllAutor = new ObservableCollection<Autor>();
 
             if (lector.HasRows)
             {
@@ -72,7 +73,7 @@ namespace ProyectoDefinitivoDINT
             return AllAutor;
         }
 
-        public List<Articulo> GetArticulos()
+        public ObservableCollection<Articulo> GetArticulos()
         {
             SqliteConnection conexion = new SqliteConnection("Data Source=RevistaAutores.db");
             conexion.Open();
@@ -81,7 +82,7 @@ namespace ProyectoDefinitivoDINT
             comando.CommandText = "SELECT * FROM Articulos";
             SqliteDataReader lector = comando.ExecuteReader();
 
-            List<Articulo> AllArticles = new List<Articulo>();
+            ObservableCollection<Articulo> AllArticles = new ObservableCollection<Articulo>();
 
             if (lector.HasRows)
             {
@@ -106,7 +107,7 @@ namespace ProyectoDefinitivoDINT
             return AllArticles;
         }
 
-        public List<string> GetSecciones()
+        public ObservableCollection<string> GetSecciones()
         {
 
             SqliteConnection conexion = new SqliteConnection("Data Source=RevistaAutores.db");
@@ -116,7 +117,7 @@ namespace ProyectoDefinitivoDINT
             comando.CommandText = "SELECT * FROM Secciones";
             SqliteDataReader lector = comando.ExecuteReader();
 
-            List<string> AllSeccion = new List<string>();
+            ObservableCollection<string> AllSeccion = new ObservableCollection<string>();
 
             if (lector.HasRows)
             {
@@ -141,6 +142,35 @@ namespace ProyectoDefinitivoDINT
             comando.CommandText = "SELECT * FROM Autores WHERE id = @id";
             comando.Parameters.Add("@id", SqliteType.Integer);
             comando.Parameters["@id"].Value = id;
+            SqliteDataReader lector = comando.ExecuteReader();
+
+            Autor TheAutor = new Autor();
+
+            if (lector.HasRows)
+            {
+                lector.Read();
+                TheAutor.Id = lector.GetInt32(0);
+                TheAutor.Nombre = lector.GetString(1);
+                TheAutor.Nickname = lector.GetString(2);
+                TheAutor.Image = lector.GetString(3);
+                TheAutor.ImagenRedSocial = lector.GetString(4);
+            }
+
+            lector.Close();
+            conexion.Close();
+
+            return TheAutor;
+        }
+
+        public Autor GetAutorByNickname(string nick)
+        {
+            SqliteConnection conexion = new SqliteConnection("Data Source=RevistaAutores.db");
+            conexion.Open();
+            SqliteCommand comando = conexion.CreateCommand();
+
+            comando.CommandText = "SELECT * FROM Autores WHERE nickname = @nick";
+            comando.Parameters.Add("@nick", SqliteType.Text);
+            comando.Parameters["@nick"].Value = nick;
             SqliteDataReader lector = comando.ExecuteReader();
 
             Autor TheAutor = new Autor();

@@ -119,12 +119,15 @@
             <inputLayout:SfTextInputLayout Hint="Nombre" HelperText="Nombre del articulo" Margin="10">
                 <TextBox x:Name="tbxTitulo" Text="{Binding Path=ArticuloActual.Titulo}"></TextBox>
             </inputLayout:SfTextInputLayout>
-            <inputLayout:SfTextInputLayout Hint="@Nickname" HelperText="Nickname del autor" Margin="10">
-                <TextBox x:Name="tbxNickname" Text="{Binding Path=ArticuloActual.Autor.Nickname}"></TextBox>
+            <inputLayout:SfTextInputLayout Hint="Autor" HelperText="Elegir el autor del artículo" Margin="10">
+                <ComboBox x:Name="cbxAutor" Width="150" ItemsSource="{Binding Path=ListaAutoresNickname}" SelectedItem="{Binding Path=NickNameActual}"></ComboBox>
             </inputLayout:SfTextInputLayout>
-            <inputLayout:SfTextInputLayout Hint="Seccion" HelperText="Elegir la seccion del artículo" Margin="10">
-                <ComboBox x:Name="cbxSeccion" Width="150" ItemsSource="{Binding Path=ListaCategorias}" SelectedItem="{Binding Path=ArticuloActual.Seccion}"></ComboBox>
-            </inputLayout:SfTextInputLayout>
+            <StackPanel Orientation="Horizontal">
+                <inputLayout:SfTextInputLayout Hint="Seccion" HelperText="Elegir la seccion del artículo" Margin="10">
+                    <ComboBox x:Name="cbxSeccion" Width="150" ItemsSource="{Binding Path=ListaCategorias}" SelectedItem="{Binding Path=ArticuloActual.Seccion}"></ComboBox>
+                </inputLayout:SfTextInputLayout>
+                <Button Height="40" Width="40" Margin="0,0,10,0">+</Button>
+            </StackPanel>
 
             <Border Margin="0,10" BorderBrush="Black" BorderThickness="1" CornerRadius="2">
                 <Image Source="{Binding Path=ArticuloActual.Imagen}" Height="200" Width="230"></Image>

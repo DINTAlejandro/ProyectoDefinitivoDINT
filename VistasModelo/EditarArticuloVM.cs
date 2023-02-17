@@ -23,46 +23,52 @@ namespace ProyectoDefinitivoDINT.VistasModelo
             set { SetProperty(ref articuloActual, value); }
         }
 
-        private ObservableCollection<string> listaRedesSociales;
-        public ObservableCollection<string> ListaRedesSociales
+        private ObservableCollection<string> listaCategorias;
+        public ObservableCollection<string> ListaCategorias
         {
-            get { return listaRedesSociales; }
-            set { SetProperty(ref listaRedesSociales, value); }
+            get { return listaCategorias; }
+            set { SetProperty(ref listaCategorias, value); }
         }
 
+        private ObservableCollection<Autor> listaAutores;
+        public ObservableCollection<Autor> ListaAutores
+        {
+            get { return listaAutores; }
+            set { SetProperty(ref listaAutores, value); }
+        }
 
 
         //Servicios
         private CargarCategoriasServicio cargarCategoriasServicio;
-
+        private ServicioBD bbddServicio;
 
         //Comandos
         public RelayCommand AceptarCommand { get; }
         public RelayCommand SeleccionarImagenCommand { get; }
 
+
+
         public EditarArticuloVM()
         {
             //Mensajería
-            WeakReferenceMessenger.Default.Register<ArticuloValueChangedMessage>(this, (r, m) =>
-            {
-                ArticuloActual = m.Value;
-            });
+            ArticuloActual = WeakReferenceMessenger.Default.Send<ArticuloRequestMessage>();
 
             //Servicios
             cargarCategoriasServicio = new CargarCategoriasServicio();
+            bbddServicio = new ServicioBD();
 
             //Comandos
             AceptarCommand = new RelayCommand(Aceptar);
             SeleccionarImagenCommand = new RelayCommand(SeleccionarImagenAutor);
 
             //Propiedades
-            ListaRedesSociales = cargarCategoriasServicio.CargarCategorias();
-            
+            ListaCategorias = bbddServicio.GetSecciones();
+            ListaAutores = bbddServicio.GetAutors();
         }
 
         public void Aceptar()
         {
-            
+            bbddServicio.InsertArticles(ArticuloActual);
         }
         public void SeleccionarImagenAutor()
         {

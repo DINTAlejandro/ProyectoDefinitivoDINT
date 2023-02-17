@@ -31,20 +31,25 @@ namespace ProyectoDefinitivoDINT.VistasModelo
         }
 
         //Servicios
-        CargarRedesSocialesServicio cargarRedesSocialesServicio;
+        private CargarRedesSocialesServicio cargarRedesSocialesServicio;
+        private ServicioBD bbddServicio;
+        private ControlErroresServicio controlErroresServicio;
 
-        
-        
+
         //Comandos
         public RelayCommand SeleccionarImagenCommand { get; }
-        
+        public RelayCommand AceptarCommand{ get; }
+
         public EditarAutorVM()
         {
             //Servicios
             cargarRedesSocialesServicio = new CargarRedesSocialesServicio();
+            bbddServicio = new ServicioBD();
+            controlErroresServicio = new ControlErroresServicio();
 
             //Comandos
             SeleccionarImagenCommand = new RelayCommand(SeleccionarImagenAutor);
+            AceptarCommand = new RelayCommand(Aceptar);
 
             //Propiedades
             ListaRedesSociales = cargarRedesSocialesServicio.CargarRedesSociales();
@@ -55,6 +60,14 @@ namespace ProyectoDefinitivoDINT.VistasModelo
         {
             AbrirImagenesServicio servicioAbrir = new AbrirImagenesServicio();
             AutorActual.Image = servicioAbrir.ObtenerImagen();
+        }
+
+        public void Aceptar()
+        {
+            if (AutorActual.Nombre == "" || AutorActual.Nickname == "" || AutorActual.ImagenRedSocial == "" || AutorActual.Image == "")
+                controlErroresServicio.ErrorCamposVacios();
+            else
+                bbddServicio.UpdateAutor(AutorActual);
         }
     }
 }

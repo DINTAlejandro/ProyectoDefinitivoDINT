@@ -10,16 +10,22 @@ namespace ProyectoDefinitivoDINT.Servicios
 {
     class CargarControlServicio
     {
-        public CargarControlServicio() { }
+        private UserControl listaArticulos;
+        private UserControl listaAutores;
+
+        public CargarControlServicio() {
+            listaAutores = new ListaAutoresControl();
+            listaArticulos = new ListaArticulosControl();
+        }
 
         public UserControl ListaAutores()
         {
-            return new ListaAutoresControl();
+            return listaAutores;
         }
 
         public UserControl ListaArticulos()
         {
-            return new ListaArticulosControl();
+            return listaArticulos;
         }
     }
 }

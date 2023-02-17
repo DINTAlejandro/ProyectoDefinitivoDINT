@@ -5,5 +5,8 @@
     <Setting Name="key" Type="System.String" Scope="Application">
       <Value Profile="(Default)">OTE4NTAxQDMyMzAyZTM0MmUzMEZPU0Q5VEtWQzB3WXlDZGFvNVM2dEw0cFNPVlVpUTgyWVFMdkFQNzAwckk9</Value>
     </Setting>
+    <Setting Name="endpoint" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">https://moderadorrevista.cognitiveservices.azure.com/</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

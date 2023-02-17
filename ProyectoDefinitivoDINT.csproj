@@ -36,6 +36,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Recursos\NewspaperIcon.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="Azure.Core, Version=1.27.0.0, Culture=neutral, PublicKeyToken=92742159e12e44c8, processorArchitecture=MSIL">
       <HintPath>packages\Azure.Core.1.27.0\lib\net461\Azure.Core.dll</HintPath>
@@ -221,6 +224,7 @@
     <Compile Include="Servicios\ServicioAutor.cs" />
     <Compile Include="Servicios\ServicioAzure.cs" />
     <Compile Include="Servicios\ServicioBD.cs" />
+    <Compile Include="Servicios\ServicioModeracion.cs" />
     <Compile Include="Servicios\ServicioHtml.cs" />
     <Compile Include="Servicios\ServicioPdf.cs" />
     <Compile Include="Ventanas\EditarArticuloVentana.xaml.cs">
@@ -228,6 +232,9 @@
     </Compile>
     <Compile Include="Ventanas\EditarAutorVentana.xaml.cs">
       <DependentUpon>EditarAutorVentana.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Ventanas\NuevaCategoria.xaml.cs">
+      <DependentUpon>NuevaCategoria.xaml</DependentUpon>
     </Compile>
     <Compile Include="Ventanas\NuevoArticuloVentana.xaml.cs">
       <DependentUpon>NuevoArticuloVentana.xaml</DependentUpon>
@@ -246,6 +253,7 @@
     <Compile Include="VistasModelo\ListaArticulosControlVM.cs" />
     <Compile Include="VistasModelo\ListaAutoresControlVM.cs" />
     <Compile Include="VistasModelo\MainWindowVM.cs" />
+    <Compile Include="VistasModelo\NuevaCategoriaVM.cs" />
     <Compile Include="VistasModelo\NuevoArticuloVM.cs" />
     <Compile Include="VistasModelo\NuevoAutorVM.cs" />
     <Compile Include="VistasModelo\VerArticuloVM.cs" />
@@ -275,6 +283,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Ventanas\EditarAutorVentana.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Ventanas\NuevaCategoria.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -338,7 +350,12 @@
     <Resource Include="Recursos\censurar_icono.ico" />
     <Resource Include="Recursos\autor_icono.ico" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="Recursos\NewspaperIcon.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Recursos\Magazine.ico" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="packages\SQLitePCLRaw.lib.e_sqlite3.2.0.4\build\net461\SQLitePCLRaw.lib.e_sqlite3.targets" Condition="Exists('packages\SQLitePCLRaw.lib.e_sqlite3.2.0.4\build\net461\SQLitePCLRaw.lib.e_sqlite3.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

@@ -16,21 +16,16 @@ using System.Windows.Shapes;
 namespace ProyectoDefinitivoDINT.Ventanas
 {
     /// <summary>
-    /// Lógica de interacción para NuevoAutorVentana.xaml
+    /// Lógica de interacción para NuevaCategoria.xaml
     /// </summary>
-    public partial class NuevoAutorVentana : Window
+    public partial class NuevaCategoria : Window
     {
-        NuevoAutorVM vm;
-        public NuevoAutorVentana()
+        private NuevaCategoriaVM vm;
+        public NuevaCategoria()
         {
             InitializeComponent();
-            vm = new NuevoAutorVM();
+            vm = new NuevaCategoriaVM();
             this.DataContext = vm;
-        }
-
-        private void btnAceptar_Click(object sender, RoutedEventArgs e)
-        {
-            DialogResult = true;
         }
     }
 }

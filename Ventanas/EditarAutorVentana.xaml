@@ -131,7 +131,7 @@
             <Button x:Name="btnElegirImagen" DockPanel.Dock="Left" Command="{Binding Path=SeleccionarImagenCommand}" Template="{DynamicResource newButton}">Elegir imagen</Button>
             <StackPanel DockPanel.Dock="Right" Orientation="Horizontal">
                 <Button x:Name="btnCancelar"  Command="{}" Template="{DynamicResource cancelButton}" IsCancel="True">Cancelar</Button>
-                <Button Margin="10,0" x:Name="btnAceptar"  Command="{}" Template="{DynamicResource acceptButton}" IsDefault="True">Aceptar</Button>
+                <Button Margin="10,0" x:Name="btnAceptar"  Command="{Binding Path=AceptarCommand}" Template="{DynamicResource acceptButton}" IsDefault="True" Click="btnAceptar_Click">Aceptar</Button>
             </StackPanel>
         </DockPanel>
     </StackPanel>

@@ -129,8 +129,8 @@
 
         <DockPanel LastChildFill="False" Margin="0,10">
             <Button x:Name="btnElegirImagen" DockPanel.Dock="Left" Command="{Binding Path=SeleccionarImagenCommand}" Template="{DynamicResource newButton}">Elegir imagen</Button>
-            <Button x:Name="btnCancelar"  DockPanel.Dock="Right" Command="{Binding Path=AceptarCommand}" Template="{DynamicResource acceptButton}" IsDefault="True">Aceptar</Button>
-            <Button x:Name="btnAceptar" Margin="10,0" DockPanel.Dock="Right" Template="{DynamicResource cancelButton}" IsCancel="True" >Cancelar</Button>
+            <Button x:Name="btnAceptar"  DockPanel.Dock="Right" Command="{Binding Path=AceptarCommand}" Template="{DynamicResource acceptButton}" IsDefault="True" Click="btnAceptar_Click">Aceptar</Button>
+            <Button x:Name="btnCancelar" Margin="10,0" DockPanel.Dock="Right" Template="{DynamicResource cancelButton}" IsCancel="True" >Cancelar</Button>
         </DockPanel>
     </StackPanel>
 </Window>
