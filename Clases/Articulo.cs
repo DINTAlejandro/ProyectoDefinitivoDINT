@@ -61,11 +61,6 @@ namespace ProyectoDefinitivoDINT.Clases
             get { return id; }
             set { SetProperty(ref id, value); }
         }
-        public string Pdf
-        {
-            get { return pdf; }
-            set { SetProperty(ref pdf, value); }
-        }
 
         public Articulo()
         {

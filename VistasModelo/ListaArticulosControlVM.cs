@@ -66,9 +66,9 @@ namespace ProyectoDefinitivoDINT.VistasModelo
         public ObservableCollection<Articulo> PilaArticulos()
         {
             ObservableCollection<Articulo> ejemploAutores = new ObservableCollection<Articulo>();
-            ejemploAutores.Add(new Articulo("Articulo 1", null, "Artúclo de prueba", "Sección 1", new Autor("Pepe", "@Pepito", "", "Twitter", null), true));
-            ejemploAutores.Add(new Articulo("Articulo 2", null, "Artúclo de prueba", "Sección 2", new Autor("Juan", "@Juanito", "", "Instagram", null), false));
-            ejemploAutores.Add(new Articulo("Articulo 3", null, "Artúclo de prueba", "Sección 3", new Autor("Luis", "@Luisito", "", "Facebook", null), true));
+            ejemploAutores.Add(new Articulo("Articulo 1", null, "Artúclo de prueba", "Sección 1", new Autor("Pepe", "@Pepito", "", "Twitter", null), true, ""));
+            ejemploAutores.Add(new Articulo("Articulo 2", null, "Artúclo de prueba", "Sección 2", new Autor("Juan", "@Juanito", "", "Instagram", null), false, ""));
+            ejemploAutores.Add(new Articulo("Articulo 3", null, "Artúclo de prueba", "Sección 3", new Autor("Luis", "@Luisito", "", "Facebook", null), true, ""));
 
             return ejemploAutores;
         }
