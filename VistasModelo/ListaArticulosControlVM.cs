@@ -102,6 +102,7 @@ namespace ProyectoDefinitivoDINT.VistasModelo
         {
             //Remove consulta
             bbddServicio.DeleteArticulo(ArticuloActual);
+            Articulos = bbddServicio.GetArticulos();
         }
 
         public void VerArticulo()
