@@ -60,5 +60,10 @@ namespace ProyectoDefinitivoDINT.Clases
             this.imagenRedSocial = imagenRedSocial;
             this.articulos = articulos;
         }
+
+        public override string ToString()
+        {
+            return Nickname;
+        }
     }
 }

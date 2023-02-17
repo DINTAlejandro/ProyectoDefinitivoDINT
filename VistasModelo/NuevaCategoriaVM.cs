@@ -1,4 +1,5 @@
 ﻿using Microsoft.Toolkit.Mvvm.ComponentModel;
+using Microsoft.Toolkit.Mvvm.Input;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,6 +10,10 @@ namespace ProyectoDefinitivoDINT.VistasModelo
 {
     class NuevaCategoriaVM : ObservableObject
     {
+        //Servicios
+        private ServicioBD bbddServicio;
+
+        //Propiedades
         private string categoria;
 
         public string Categoria
@@ -17,9 +22,23 @@ namespace ProyectoDefinitivoDINT.VistasModelo
             set { SetProperty(ref categoria, value); }
         }
 
+        //Commands
+        public RelayCommand AddCommand { get; }
+
         public NuevaCategoriaVM()
         {
+            //Command
+            AddCommand = new RelayCommand(Aceptar);
 
+            //Servicios
+            bbddServicio = new ServicioBD();
+        }
+
+        public void Aceptar()
+        {
+            if(Categoria != "")
+                bbddServicio.InsertSecciones(Categoria);
+            
         }
     }
 }

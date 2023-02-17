@@ -217,7 +217,6 @@
     <Compile Include="Mensajes\AutorRequestMessage.cs" />
     <Compile Include="Mensajes\AutorValueChangedMessage.cs" />
     <Compile Include="Servicios\AbrirImagenesServicio.cs" />
-    <Compile Include="Servicios\CargarCategoriasServicio.cs" />
     <Compile Include="Servicios\CargarControlServicio.cs" />
     <Compile Include="Servicios\CargarRedesSocialesServicio.cs" />
     <Compile Include="Servicios\ControlErroresServicio.cs" />
@@ -225,10 +224,8 @@
     <Compile Include="Servicios\ServicioAzure.cs" />
     <Compile Include="Servicios\ServicioBD.cs" />
     <Compile Include="Servicios\ServicioModeracion.cs" />
+    <Compile Include="Servicios\ServicioHtml.cs" />
     <Compile Include="Servicios\ServicioPdf.cs" />
-    <Compile Include="Ventanas\EditarArticuloVentana.xaml.cs">
-      <DependentUpon>EditarArticuloVentana.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Ventanas\EditarAutorVentana.xaml.cs">
       <DependentUpon>EditarAutorVentana.xaml</DependentUpon>
     </Compile>
@@ -247,7 +244,6 @@
     <Compile Include="Ventanas\VerAutorVentana.xaml.cs">
       <DependentUpon>VerAutorVentana.xaml</DependentUpon>
     </Compile>
-    <Compile Include="VistasModelo\EditarArticuloVM.cs" />
     <Compile Include="VistasModelo\EditarAutorVM.cs" />
     <Compile Include="VistasModelo\ListaArticulosControlVM.cs" />
     <Compile Include="VistasModelo\ListaAutoresControlVM.cs" />
@@ -277,10 +273,6 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="Ventanas\EditarArticuloVentana.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="Ventanas\EditarAutorVentana.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

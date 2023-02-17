@@ -5,14 +5,22 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ProyectoDefinitivoDINT.Ventanas"
         mc:Ignorable="d"
-        Title="Introduce una nueva categoría" Height="350" Width="400">
+        Title="Introduce una nueva categoría" Height="250" Width="400" 
+        ResizeMode="NoResize"
+        ShowInTaskbar="False"
+        WindowStartupLocation="CenterScreen"
+        Icon="/Recursos/autor_icono.ico"
+        >
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
         <StackPanel Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Center">
-            <TextBox Width="200" Text="{Binding Path=Categoria}"></TextBox>
-            <Button>Añadir</Button>
+            <TextBox Width="210" Text="{Binding Path=Categoria}"></TextBox>
+            <DockPanel LastChildFill="False" Margin="0,15">
+                <Button x:Name="btnAdd" Margin="5" Width="100" Command="{Binding Path=AddCommand}" IsDefault="True" DockPanel.Dock="Right" Click="btnAdd_Click">Añadir</Button>
+                <Button Margin="5" Width="100" IsCancel="True"  DockPanel.Dock="Left">Cancelar</Button>
+            </DockPanel>
         </StackPanel>
     </Grid>
 </Window>

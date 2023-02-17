@@ -1,6 +1,7 @@
 ﻿using Microsoft.Toolkit.Mvvm.ComponentModel;
 using Microsoft.Toolkit.Mvvm.Input;
 using ProyectoDefinitivoDINT.Clases;
+using ProyectoDefinitivoDINT.Mensajes;
 using ProyectoDefinitivoDINT.Servicios;
 using System;
 using System.Collections.Generic;
@@ -45,7 +46,7 @@ namespace ProyectoDefinitivoDINT.VistasModelo
 
 
         //Servicios
-        private CargarCategoriasServicio cargarCategoriasServicio;
+        private AbrirVentanaServicio abrirVentanaServicio;
         private ServicioBD bbddServicio;
 
         //Comandos
@@ -56,14 +57,15 @@ namespace ProyectoDefinitivoDINT.VistasModelo
 
         public NuevoArticuloVM()
         {
-            
+
             //Servicios
-            cargarCategoriasServicio = new CargarCategoriasServicio();
+            abrirVentanaServicio = new AbrirVentanaServicio();
             bbddServicio = new ServicioBD();
 
             //Comandos
             AceptarCommand = new RelayCommand(Aceptar);
             SeleccionarImagenCommand = new RelayCommand(SeleccionarImagenAutor);
+            NuevaSeccionCommand = new RelayCommand(NuevaSeccion);
 
             //Propiedades
             ArticuloActual = new Articulo();
@@ -86,7 +88,8 @@ namespace ProyectoDefinitivoDINT.VistasModelo
 
         public void NuevaSeccion()
         {
-
+            abrirVentanaServicio.AbrirNuevaCategoria();
+            ListaCategorias = bbddServicio.GetSecciones();
         }
 
         public void SeleccionarImagenAutor()

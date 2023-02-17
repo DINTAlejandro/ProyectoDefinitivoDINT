@@ -3,6 +3,7 @@ using Microsoft.Toolkit.Mvvm.Input;
 using Microsoft.Toolkit.Mvvm.Messaging;
 using ProyectoDefinitivoDINT.Clases;
 using ProyectoDefinitivoDINT.Mensajes;
+using ProyectoDefinitivoDINT.Servicios;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -33,7 +34,7 @@ namespace ProyectoDefinitivoDINT.VistasModelo
         }
 
         //Comandos
-        public RelayCommand EditarArticuloCommand { get; }
+        public RelayCommand PublicarArticuloCommand { get; }
         public RelayCommand EliminarArticuloCommand { get; }
         public RelayCommand VerArticuloCommand { get; }
         public RelayCommand NuevoArticuloCommnad { get; }
@@ -41,6 +42,8 @@ namespace ProyectoDefinitivoDINT.VistasModelo
         //Servicios
         private AbrirVentanaServicio abrirVentanaServicio;
         private ServicioBD bbddServicio;
+        private ServicioPdf servicioPdf;
+        private ServicioAzure servicioAzure;
 
         public ListaArticulosControlVM()
         {
@@ -55,14 +58,15 @@ namespace ProyectoDefinitivoDINT.VistasModelo
             //Servícios
             abrirVentanaServicio = new AbrirVentanaServicio();
             bbddServicio = new ServicioBD();
-
+            servicioPdf = new ServicioPdf();
+            servicioAzure = new ServicioAzure();
 
             //Propiedades
             ArticuloActual = null;
             Articulos = new ObservableCollection<Articulo>();
 
             //Comandos
-            EditarArticuloCommand = new RelayCommand(EditarArticulo);
+            PublicarArticuloCommand = new RelayCommand(PublicarArticulo);
             EliminarArticuloCommand = new RelayCommand(EliminarArticulo);
             VerArticuloCommand = new RelayCommand(VerArticulo);
             NuevoArticuloCommnad = new RelayCommand(NuevoArticulo);
@@ -83,16 +87,22 @@ namespace ProyectoDefinitivoDINT.VistasModelo
         //}
 
         //Funciones comandos
-        public void EditarArticulo()
+        public void PublicarArticulo()
         {
-            abrirVentanaServicio.AbrirEditarArticulo();
-            Articulos = bbddServicio.GetArticulos();
+            if(ArticuloActual != null)
+            {
+                ArticuloActual.Autor.Image = servicioAzure.SubirFoto(ArticuloActual.Autor.Image);
+                ArticuloActual.Imagen = servicioAzure.SubirFoto(ArticuloActual.Imagen);
+                ArticuloActual.Pdf = servicioPdf.GenerarPDF(ArticuloActual);
+                ArticuloActual.Pdf = servicioAzure.SubirPdf(ArticuloActual.Pdf);
+            }
         }
 
         public void EliminarArticulo()
         {
             //Remove consulta
-            Articulos.Remove(ArticuloActual);
+            bbddServicio.DeleteArticulo(ArticuloActual);
+            Articulos = bbddServicio.GetArticulos();
         }
 
         public void VerArticulo()

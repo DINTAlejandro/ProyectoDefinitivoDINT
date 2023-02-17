@@ -155,9 +155,9 @@
     <DockPanel>
         <StackPanel DockPanel.Dock="Bottom" Orientation="Horizontal" Margin="10">
             <Button Margin="0,0,10,0" x:Name="btnEliminar" Width="75" Template="{StaticResource deleteButton}" Command="{Binding Path=EliminarArticuloCommand}">Eliminar</Button>
-            <Button Margin="10,0" x:Name="btnEditar" Width="50" Template="{StaticResource editButton}" Command="{Binding Path=EditarArticuloCommand}">Editar</Button>
             <Button Margin="10,0" x:Name="btnVer" Width="50" Template="{StaticResource lookButton}" Command="{Binding Path=VerArticuloCommand}">Ver</Button>
             <Button Margin="10,0" x:Name="btnNuevo" Width="50" Template="{StaticResource newButton}" Command="{Binding Path=NuevoArticuloCommnad}">Nuevo autor</Button>
+            <Button Margin="10,0" x:Name="btnPublicar" Width="75" Template="{StaticResource editButton}" Command="{Binding Path=PublicarArticuloCommand}">Publicar</Button>
         </StackPanel>
         <ListBox SelectedItem="{Binding Path=ArticuloActual}"
              ScrollViewer.HorizontalScrollBarVisibility="Disabled" 

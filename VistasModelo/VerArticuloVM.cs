@@ -32,15 +32,13 @@ namespace ProyectoDefinitivoDINT.VistasModelo
 
 
         //Servicios
-        private CargarCategoriasServicio cargarCategoriasServicio;
+        
 
         public VerArticuloVM()
         {
             //Servicios
-            cargarCategoriasServicio = new CargarCategoriasServicio();
 
             //Propiedades
-            Categorias = cargarCategoriasServicio.CargarCategorias();
             ArticuloActual = WeakReferenceMessenger.Default.Send<ArticuloRequestMessage>();
         }
     }

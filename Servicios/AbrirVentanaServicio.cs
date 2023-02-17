@@ -27,21 +27,21 @@ namespace ProyectoDefinitivoDINT.Mensajes
             return nuevaVentana.ShowDialog();
         }
 
-        internal bool? AbrirEditarArticulo()
-        {
-            EditarArticuloVentana nuevaVentana = new EditarArticuloVentana();
-            return nuevaVentana.ShowDialog();
-        }
-
-        internal bool? AbrirVerArticulo()
+        public bool? AbrirVerArticulo()
         {
             VerArticuloVentana nuevaVentana = new VerArticuloVentana();
             return nuevaVentana.ShowDialog();
         }
 
-        internal bool? AbrirCrearArticulo()
+        public bool? AbrirCrearArticulo()
         {
             NuevoArticuloVentana nuevaVentana = new NuevoArticuloVentana();
+            return nuevaVentana.ShowDialog();
+        }
+
+        public bool? AbrirNuevaCategoria()
+        {
+            NuevaCategoria nuevaVentana = new NuevaCategoria();
             return nuevaVentana.ShowDialog();
         }
     }
