@@ -27,12 +27,6 @@ namespace ProyectoDefinitivoDINT.Mensajes
             return nuevaVentana.ShowDialog();
         }
 
-        public bool? AbrirEditarArticulo()
-        {
-            EditarArticuloVentana nuevaVentana = new EditarArticuloVentana();
-            return nuevaVentana.ShowDialog();
-        }
-
         public bool? AbrirVerArticulo()
         {
             VerArticuloVentana nuevaVentana = new VerArticuloVentana();
