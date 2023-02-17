@@ -85,14 +85,13 @@ namespace ProyectoDefinitivoDINT.VistasModelo
         //Funciones comandos
         public void PublicarArticulo()
         {
-            abrirVentanaServicio.AbrirEditarArticulo();
             Articulos = bbddServicio.GetArticulos();
         }
 
         public void EliminarArticulo()
         {
             //Remove consulta
-            Articulos.Remove(ArticuloActual);
+            bbddServicio.DeleteArticulo(ArticuloActual);
         }
 
         public void VerArticulo()

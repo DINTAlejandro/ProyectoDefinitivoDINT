@@ -28,6 +28,8 @@ namespace ProyectoDefinitivoDINT
         public MainWindow()
         {
             InitializeComponent();
+            vm = new MainWindowVM();
+            this.DataContext = vm;
             /*ServicioAzure azure = new ServicioAzure();
             ServicioPdf pdf = new ServicioPdf();
             ServicioHtml html = new ServicioHtml();
